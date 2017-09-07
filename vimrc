@@ -1,0 +1,286 @@
+"===============================================================================
+" Setups for The VIM editor, The - Improved - Editor of the Beast
+"===============================================================================
+
+" Basic setups even before additional plugins are loaded
+set nocompatible                " be iMproved, required
+filetype on                     " required
+set term=screen-256color
+syntax on                       " Better to turn it on.
+colorscheme murphy
+
+
+
+" Plugins ----------{{{
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" AirLine plugin
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" YoutCompleteMe
+Plugin 'Valloric/YouCompleteMe'
+
+" Syntastic, for on the fly syntax check
+Plugin 'scrooloose/syntastic'
+
+" LaTeX prlugin
+Plugin 'lervag/vimtex'
+
+" undotree to show changes of the file
+Plugin 'mbbill/undotree'
+
+" fugitive plugin to see git status and branches via airline
+Plugin 'tpope/vim-fugitive'
+
+" Tagbar to help move around tags created by ctag
+Plugin 'majutsushi/tagbar'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+" filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+"
+" }}}
+
+" AirLine setup ------{{{
+set laststatus=2
+set t_Co=256
+set ttimeoutlen=50  
+let g:airline_theme='dark'
+let g:airline_powerline_fonts=1
+let g:ariline#extensions#tabline#enabled=1
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':.'
+let g:airline#extensions#wordcount#enabled = 0
+let g:airline_detect_spell=1
+let g:airline_section_z = airline#section#create(['%3p%%', ':%3v'])
+
+" Recomended setup for Syntastic.
+let g:airline#extensions#syntastic#enabled = 1
+
+" }}}
+
+" YouCompleteMe setups -----------{{{
+" Allows every filetype to be used with YCM
+" let g:ycm_filetype_whitelist = { '*': 1 }
+let g:ycm_extra_conf_cim_data = []
+let g:ycm_show_diagnostics_ui=1
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_register_as_syntastic_checker = 0
+
+" }}}
+
+" Movement steups ------{{{            
+
+" Let j k behave on line not on paraghraph
+nnoremap j gj
+nnoremap k gk
+
+" Do the same in visual mode
+vnoremap j gj
+vnoremap k gk
+
+" kill the arrowkeys
+nnoremap <left> <nop>
+vnoremap <left> <nop>
+inoremap <left> <nop>
+
+nnoremap <right> <nop>
+vnoremap <right> <nop>
+inoremap <right> <nop>
+
+nnoremap <up> <nop>
+vnoremap <up> <nop>
+inoremap <up> <nop>
+
+nnoremap <down> <nop>
+vnoremap <down> <nop>
+inoremap <down> <nop>
+
+" Jump to the end of screen of the current line
+nnoremap L g$
+vnoremap L g$
+
+" Jump to the beginning of the screen of the current line 
+nnoremap H g0
+vnoremap H g0
+
+
+" Remaps in normal mode to change buffer
+nnoremap <TAB> :bn<ESC>
+nnoremap <S-TAB> :bp<ESC>
+" }}}
+
+" Uncategorized setups -----{{{
+
+" Save or update when hitting the enter in normal mode
+nnoremap <ENTER> :wa<ENTER>
+
+
+" Tab size setup
+" show existing tab with 4 spaces width
+set tabstop=2
+" When indenting with '>', use 4 spaces width
+set shiftwidth=2
+" On pressing tab, insert 4 spaces
+set expandtab
+
+" Put extra information into the main line
+set wildmenu
+
+" Highligth search 
+set hlsearch
+" Show search result on the fiy
+set incsearch
+" Setup for Smart case sensitive search
+set ignorecase
+set smartcase
+
+" Repeate function in visula mode setup
+vnoremap . :normal . <cr>   
+
+" Let's reload file automatically which modified outside vim
+set autoread
+
+" Set soft wrap at the line ending
+set wrap linebreak nolist
+
+" setup of shortmess
+set shortmess+=c
+set shortmess+=I
+set shortmess+=t
+set shortmess+=T
+set shortmess+=s
+
+" Line numbering setup
+set number
+highlight LineNr ctermfg=gray
+" Set numbering to relative
+set relativenumber
+
+" Set undo to persistent
+if has("persistent_undo")
+    set undodir=~/.vim/undodir/
+    set undofile
+endif
+"}}}
+
+" Mapping from the Learn Vimscript the hard way fantasy book -----{{{
+
+
+" Puts the current line 1 line belove
+nnoremap - ddp
+" Puts the current line 1 line above
+nnoremap _ dd2kp
+
+" Set the leader, change later if you find some better
+" let mapleader = "\\"
+
+" edit .vimrc fast in a horizontaly split window
+nnoremap <leader>ev :split ~/.vimrc<CR> 
+
+" apply the the current vimrc setup
+nnoremap <leader>sv :source ~/.vimrc<CR>
+
+" put quote around the the current word
+nnoremap <leader>" viw<ESC>a"<ESC>bi"<ESC>lel
+"}}}
+
+" Mappings for Function keys: <Fx> ----------{{{
+nnoremap <F2> :noh<CR>
+" nnoremap <F3> :source ./.generateTags.vim<CR>
+nnoremap <F3> :call ResetCtags()<CR>
+
+" Close the current buffer,
+" TODO rewrite it so it could be used with a N as a
+" prefix, and it closes N buffer
+nnoremap <F10> :bdelete<CR>
+
+"}}}
+
+" Language spell checks --------{{{
+augroup check_lang
+    autocmd!
+    autocmd BufWritePost *.md :setlocal spell spelllang=en_us,hu
+    autocmd BufWritePost *.tex :setlocal spell spelllang=en_us,hu
+augroup END
+"}}}
+
+" Use the same comment on different files -------------------{{{
+augroup comment
+    autocmd!
+    autocmd FileType vim nnoremap <buffer> <localleader>c 0i"<space><ESC>
+    autocmd FileType python nnoremap <buffer> <localleader>c 0i#<space><ESC>
+    autocmd FileType c nnoremap <buffer> <localleader>c 0i//<space><ESC>
+    autocmd FileType h nnoremap <buffer> <localleader>c 0i//<space><ESC>
+    autocmd FileType cpp nnoremap <buffer> <localleader>c 0i//<space><ESC>
+    autocmd FileType sh nnoremap <buffer> <localleader>c 0i#<space><ESC>
+    autocmd FileType tex nnoremap <buffer> <localleader>c 0i%<space><ESC>
+    autocmd FileType matlab nnoremap <buffer> <localleader>c 0i%<space><ESC>
+
+    " set keycommand to uncomment a line based on the filetype
+    autocmd FileType vim nnoremap <buffer> <localleader><S-c> 0xx<ESC>
+    autocmd FileType python nnoremap <buffer> <localleader><S-c> 0xx<ESC>
+    autocmd FileType c nnoremap <buffer> <localleader><S-c> 0xxx<ESC>
+    autocmd FileType h nnoremap <buffer> <localleader><S-c> 0xxx<ESC>
+    autocmd FileType cpp nnoremap <buffer> <localleader><S-c> 0xxx<ESC>
+    autocmd FileType sh nnoremap <buffer> <localleader><S-c> 0xx<ESC>
+    autocmd FileType tex nnoremap <buffer> <localleader><S-c> 0xx<ESC>
+    autocmd FileType matlab nnoremap <buffer> <localleader><S-c> 0xx<ESC>
+augroup END
+" }}}
+
+" Markdown specific mappings ------------{{{
+augroup Markdown
+    autocmd!
+    autocmd FileType markdown nnoremap <buffer> <localleader><s-h> yypVr=
+    autocmd FileType markdown nnoremap <buffer> <localleader>h yypVr-
+augroup END
+" }}}
+
+" Vimscript file settings ----------{{{
+augroup FileType_vim
+    autocmd!
+    " Auto folding for *.vim files
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
+
+"=========================== Function used in this file ========================
+
+" Function to reset ctags, inside the caller directory ------------------{{{
+" For me, the .generateTags.vim file has teh following two rows:
+"   let @x = system("rm -v tags")
+"   let @y = system("ctags -R ./src")
+"
+" I keep the tags file in the project directory, and open vim from there, 
+" and keep the source files in './src', the header files in the './src/inc'.
+function! ResetCtags( )
+    if filereadable(".generateTags.vim")
+        source .generateTags.vim
+    else
+        echom "Generator file is missing!"
+    endif
+endfunction
+
+" }}}
+
