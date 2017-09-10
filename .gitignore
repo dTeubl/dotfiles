@@ -1,6 +1,6 @@
 # These is the global gitignore file.
 
 *.swp
+backup_old_configs/
+temp/*
 
-./backup_old_configs/
-./temp/
