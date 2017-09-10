@@ -29,14 +29,13 @@ do
             else
                 cp $OLD_FILE "$OLD_PATH/backup_old_configs/old_$file"
             fi
-
-
-            # Remove the old file
-            # rm $file
         fi
         
+        # Remove the old file
+        rm $OLD_FILE
+
         # create a symbolic link to the ~/directory
-        # ln -s $file $OLD_FILE
+        ln -s $OLD_PATH/conf_files/$file $OLD_FILE
     fi
     echo 
 done
