@@ -3,4 +3,5 @@
 *.swp
 backup_old_configs/
 temp/*
+*todo.md
 

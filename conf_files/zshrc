@@ -119,9 +119,12 @@ alias naut='nautilus . &'
 alias tmux='tmux -2 -f /home/teubl/.tmux.conf'
 
 
+# configure and run fbterm on startup
 FBTERM=1 fbterm 
 [ -n "$FBTERM" ] && TERM=fbterm
 
+# run a new session of tmux right after the fbterm
+tmux -2
 
 # alias for battery
 alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "time\ to\ "'
