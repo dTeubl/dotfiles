@@ -122,3 +122,8 @@ alias tmux='tmux -2 -f /home/teubl/.tmux.conf'
 FBTERM=1 fbterm 
 [ -n "$FBTERM" ] && TERM=fbterm
 
+
+# alias for battery
+alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "time\ to\ "'
+# alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0 |grep -E "to full|percentage"'
+

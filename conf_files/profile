@@ -24,3 +24,4 @@ fi
 export PATH="$PATH:"/opt/microchip/xc16/v1.30/bin""
 
 [ -n "$FBTERM" ] && TERM=fbterm
+
