@@ -5,9 +5,11 @@
 " Basic setups even before additional plugins are loaded
 set nocompatible                " be iMproved, required
 filetype on                     " required
-set term=screen-256color
-syntax on                       " Better to turn it on.
-colorscheme murphy
+syntax enable                       " Better to turn it on.
+set t_Co=256
+set term=screen-256color        " enable 256 color in console mode
+
+colorscheme mod_desert
 
 
 
@@ -207,8 +209,12 @@ nnoremap <leader>" viw<ESC>a"<ESC>bi"<ESC>lel
 
 " Mappings for Function keys: <Fx> ----------{{{
 nnoremap <F2> :noh<CR>
-" nnoremap <F3> :source ./.generateTags.vim<CR>
+
+" Reset the ctags file on the current diretory
 nnoremap <F3> :call ResetCtags()<CR>
+
+" Puts the current time to the cursre
+nnoremap <F4> :r !currTime<CR>
 
 " Close the current buffer,
 " TODO rewrite it so it could be used with a N as a
@@ -283,4 +289,5 @@ function! ResetCtags( )
 endfunction
 
 " }}}
+
 
