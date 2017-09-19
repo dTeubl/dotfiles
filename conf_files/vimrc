@@ -216,6 +216,10 @@ nnoremap <F3> :call ResetCtags()<CR>
 " Puts the current time to the cursre
 nnoremap <F4> :r !currTime<CR>
 
+" Used to test the colorscheme file during developement
+nnoremap <F6> :! sudo cp -v ~/progs/tools/dotfiles/color_theme/console_custom.vim /usr/share/vim/vim80/colors/ <CR>
+
+
 " Close the current buffer,
 " TODO rewrite it so it could be used with a N as a
 " prefix, and it closes N buffer
