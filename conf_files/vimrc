@@ -9,7 +9,7 @@ syntax enable                   " Better to turn it on.
 set t_Co=256
 set term=screen-256color        " enable 256 color in console mode
 
-colorscheme mod_desert
+colorscheme console_custom
 
 
 
@@ -217,7 +217,7 @@ nnoremap <F3> :call ResetCtags()<CR>
 nnoremap <F4> :r !currTime<CR>
 
 " Used to test the colorscheme file during developement
-nnoremap <F6> :! sudo cp -v ~/progs/tools/dotfiles/color_theme/console_custom.vim /usr/share/vim/vim80/colors/ <CR>
+nnoremap <F6> :! sudo cp -v ~/progs/tools/dotfiles/color_theme/console_custom.vim /usr/share/vim/vim80/colors/<CR>
 
 
 " Close the current buffer,

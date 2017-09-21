@@ -12,10 +12,8 @@ endif
 let g:colors_name = "console_custom"
 
 
-hi Normal	guifg=White guibg=grey20
 " color terminal definitions
-hi Normal   ctermfg=15
-hi SpecialKey	ctermfg=darkgreen
+hi SpecialKey	ctermfg=green
 " hi NonText	cterm=bold ctermfg=darkblue
 hi NonText	cterm=bold ctermfg=33
 hi Directory	ctermfg=darkcyan
@@ -45,14 +43,8 @@ hi DiffDelete	cterm=bold ctermfg=4 ctermbg=6
 hi DiffText	cterm=bold ctermbg=1
 
 hi Comment	ctermfg=darkcyan
-" hi Constant	ctermfg=brown
-" hi Constant	ctermfg=204
-hi Constant	ctermfg=15
-" 
 
 hi Special	ctermfg=160
-hi Identifier	ctermfg=27
-hi Statement	ctermfg=3
 hi PreProc	ctermfg=5
 
 
@@ -62,11 +54,16 @@ hi Ignore	ctermfg=darkgrey
 hi Error	cterm=bold ctermfg=7 ctermbg=1
 
 " user made changes, which considered final
-hi Pmenu    ctermbg=1 ctermfg=15
+hi Normal   ctermfg=255 ctermbg=235
+hi Pmenu    ctermbg=1 ctermfg=255
 hi Search	ctermfg=0 ctermbg=228
 hi LineNr	ctermfg=245
-hi Type		ctermfg=46
+hi Type		ctermfg=48
+hi Statement	ctermfg=48
+hi Identifier	ctermfg=39
 hi ModeMsg	ctermfg=255
+
+hi Constant	ctermfg=51
 
 "vim: sw=4
 
