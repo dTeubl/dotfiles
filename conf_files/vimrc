@@ -217,7 +217,7 @@ nnoremap <F3> :call ResetCtags()<CR>
 nnoremap <F4> :r !currTime<CR>
 
 " Used to test the colorscheme file during developement
-nnoremap <F6> :! sudo cp -v ~/progs/tools/dotfiles/color_theme/console_custom.vim /usr/share/vim/vim80/colors/<CR>
+nnoremap <F6> :! sudo cp -v ~/progs/tools/dotfiles/color_theme/console_custom.vim /usr/share/vim/vim80/colors/ <CR>
 
 
 " Close the current buffer,

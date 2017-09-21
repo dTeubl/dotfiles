@@ -42,10 +42,7 @@ hi DiffChange	ctermbg=5
 hi DiffDelete	cterm=bold ctermfg=4 ctermbg=6
 hi DiffText	cterm=bold ctermbg=1
 
-hi Comment	ctermfg=darkcyan
-
-hi Special	ctermfg=160
-hi PreProc	ctermfg=5
+hi PreProc	ctermfg=39
 
 
 hi Underlined	cterm=underline ctermfg=5
@@ -64,6 +61,10 @@ hi Identifier	ctermfg=39
 hi ModeMsg	ctermfg=255
 
 hi Constant	ctermfg=51
+
+hi Comment	ctermfg=lightred
+hi Special	ctermfg=lightred
+
 
 "vim: sw=4
 
