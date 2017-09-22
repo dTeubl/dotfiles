@@ -29,7 +29,6 @@ hi Question	ctermfg=green
 hi StatusLine	cterm=bold,reverse
 hi StatusLineNC cterm=reverse
 hi VertSplit	cterm=reverse
-hi Title	ctermfg=5
 hi Visual	cterm=reverse
 hi VisualNOS	cterm=bold,underline
 hi WarningMsg	ctermfg=1
@@ -42,7 +41,7 @@ hi DiffChange	ctermbg=5
 hi DiffDelete	cterm=bold ctermfg=4 ctermbg=6
 hi DiffText	cterm=bold ctermbg=1
 
-hi PreProc	ctermfg=39
+hi Title	ctermfg=39
 
 
 hi Underlined	cterm=underline ctermfg=5
@@ -65,6 +64,7 @@ hi Constant	ctermfg=51
 hi Comment	ctermfg=lightred
 hi Special	ctermfg=lightred
 
+hi PreProc	ctermfg=39
 
 "vim: sw=4
 
