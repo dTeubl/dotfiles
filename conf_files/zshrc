@@ -118,7 +118,6 @@ alias naut='nautilus . &'
 # alias tmux='TERM=screen-256color-bce tmux -2 -f /home/teubl/.tmux.conf'
 alias tmux='tmux -2 -f /home/teubl/.tmux.conf'
 
-
 # configure and run fbterm on startup
 FBTERM=1 fbterm 
 [ -n "$FBTERM" ] && TERM=fbterm
