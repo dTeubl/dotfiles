@@ -1,0 +1,13 @@
+# !/bin/bash
+# This script usefull to program a PIC MCU from command line. You have to place this into a spec directory near the project dir and src dir. 
+
+
+# Create the local variables
+config="run_conf.txt"
+
+# build the project
+make 
+
+# Download the new source
+mdb ./bin/$config
+

@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [[ $EUID != 0 ]]; then
+        /bin/echo -e "[\e[0;35m warn \x1B[0m] This script requires root privileges"
+        /usr/bin/sudo "$0" "$@"
+        exit $?
+fi
+
+/bin/mkdir -p /usr/share/keymaps
+/usr/bin/dumpkeys | /usr/bin/head -n 1 > /usr/share/keymaps/CapsNEsc.map
+/bin/echo "keycode 58 = Escape" >> /usr/share/keymaps/CapsNEsc.map
+
+/bin/echo "[Unit]
+Description=Swaps Escape and Caps Lock
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+StandardInput=tty
+StandardOutput=tty
+ExecStart=/usr/bin/loadkeys /usr/share/keymaps/CapsNEsc.map
+
+[Install]
+WantedBy=multi-user.target" > /etc/systemd/system/CapsEscSwitch.service
+
+sudo /bin/systemctl enable CapsEscSwitch.service 
+

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Get the latest tag and the current build number.
+# The describe command is made for this!
+
+git describe
