@@ -1,0 +1,8 @@
+
+
+Device dsPIC33fj64GP706A
+Hwtool PICkit3 -p
+program ./build/RX-MUX.hex
+quit
+
+

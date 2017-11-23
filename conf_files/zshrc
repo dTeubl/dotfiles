@@ -121,14 +121,14 @@ alias naut='nautilus . &'
 # alias tmux='TERM=screen-256color-bce tmux -2 -f /home/teubl/.tmux.conf'
 alias tmux='tmux -2 -f /home/teubl/.tmux.conf'
 
-# configure and run fbterm on startup
 FBTERM=1 fbterm 
 [ -n "$FBTERM" ] && TERM=fbterm
 
 # run a new session of tmux right after the fbterm
+# tmux attach &> /dev/null # would allow only one session per user
 tmux -2
 
 # alias for battery
 alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "time\ to\ "'
-# alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0 |grep -E "to full|percentage"'
+alias bat_raw='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
 
