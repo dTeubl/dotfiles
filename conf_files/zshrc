@@ -116,17 +116,34 @@ export PATH="$PATH:"/opt/microchip/xc16/v1.30/bin""
 #alias clc='clear'
 alias naut='nautilus . &'
 
+# alias for python 3.xx
+alias python='python3.6'
+
 # Add alias for tmux
 # alias tmux='tmux -2'
 # alias tmux='TERM=screen-256color-bce tmux -2 -f /home/teubl/.tmux.conf'
 alias tmux='tmux -2 -f /home/teubl/.tmux.conf'
 
-FBTERM=1 fbterm 
-[ -n "$FBTERM" ] && TERM=fbterm
+#TODO run fbterm only if you def terminal is linux
+case "$TERM" in
+    xterm*)
+        if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+            export TERM=xterm-256color
+        elif [ -e /usr/share/terminfo/x/xterm-color ]; then
+            export TERM=xterm-color;
+        else
+            export TERM=xterm
+        fi
+        ;;
+    linux)
+        FBTERM=1 fbterm 
+        [ -n "$FBTERM" ] && export TERM=fbterm
+        ;;
+esac
 
 # run a new session of tmux right after the fbterm
 # tmux attach &> /dev/null # would allow only one session per user
-tmux -2
+tmux 
 
 # alias for battery
 alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "time\ to\ "'
