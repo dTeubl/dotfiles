@@ -117,7 +117,8 @@ export PATH="$PATH:"/opt/microchip/xc16/v1.30/bin""
 alias naut='nautilus . &'
 
 # alias for python 3.xx
-alias python='python3.6'
+# alias python='python3.6'
+# alias pip='pip3'
 
 # Add alias for tmux
 # alias tmux='tmux -2'

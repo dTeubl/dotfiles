@@ -1,0 +1,47 @@
+#!/bin/bash
+#
+# This file builds the ycm core for your system. Check the setups before runnung it.
+
+PATH_CLANG_LLVM= ~/progs/tools/clang+llvm-5.0.1
+TARET_DIR=ycm_build
+
+
+if [ "--v" == $1 ]; then
+    DEBUG=1
+else
+    DEBUG=0
+fi
+
+# Find the root directory of the project
+while [ "dotfiles" != "${PWD##*/}" ]; do
+    # to print to stdout, quoted for use as shell input
+    if [ $DEBUG == 1 ]; then
+        printf 'Looking for the root directory of the project..\n'
+        printf '%q\n' "${PWD#*/}" 
+    fi
+    cd ..
+done
+
+cd ..
+
+if [ -d "ycm_build" ]; then
+    rm -vfr ycm_build
+fi
+
+mkdir ycm_build
+cd ycm_build
+
+# get cmake
+sudo apt install cmake
+
+
+printf "Set the dependencies\n"
+# Set the dependencies for the core
+sudo cmake -G "Unix Makefiles" -DPATH_TO_LLVM_ROOT=$PATH_CLANG_LLVM . ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp
+
+# build the core
+sudo cmake --build . --target ycm_core
+
+
+
+
