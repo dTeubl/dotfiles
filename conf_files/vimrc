@@ -9,7 +9,7 @@ syntax enable                   " Better to turn it on.
 set t_Co=256
 set term=screen-256color        " enable 256 color in console mode
 
-colorscheme console_custom
+colorscheme murphy
 
 
 
