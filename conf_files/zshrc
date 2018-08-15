@@ -100,7 +100,7 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="$PATH:"~/scripts""
 
-#alias clc='clear'
+
 alias naut='nautilus . &'
 
 # Add alias for tmux
@@ -141,3 +141,5 @@ alias gnome-terminal='gnome-terminal --hide-menubar --full-screen'
 # dirty sollution - should change is some time..
 # Thanks to UPC and its shitty router.
 nmcli dev modify wlp1s0 802-11-wireless.mtu 1400 >>/dev/null
+
+

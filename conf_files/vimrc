@@ -9,8 +9,11 @@ syntax enable                   " Better to turn it on.
 set t_Co=256
 set term=screen-256color        " enable 256 color in console mode
 
-colorscheme murphy
+colorscheme desktop_custom
 
+" If working in light environment
+" set background=light
+" colorscheme PaperColor
 
 
 " Plugins ----------{{{
@@ -44,6 +47,9 @@ Plugin 'tpope/vim-fugitive'
 " Tagbar to help move around tags created by ctag
 Plugin 'majutsushi/tagbar'
 
+" If working in an environment with lot of additional light in it
+Plugin 'NLKNguyen/papercolor-theme'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -66,6 +72,7 @@ set laststatus=2
 set t_Co=256
 set ttimeoutlen=50  
 let g:airline_theme='dark'
+" let g:airline_theme='light'
 let g:airline_powerline_fonts=1
 let g:ariline#extensions#tabline#enabled=1
 let g:airline#extensions#whitespace#enabled = 0
@@ -90,8 +97,7 @@ let g:ycm_confirm_extra_conf = 0
 let g:ycm_register_as_syntastic_checker = 0
 
 " Setup for python3+ check and completion
-" let g:ycm_python_binary_path = '/usr/bin/python2'
-let g:ycm_server_python_interpreter = '/usr/bin/python'
+let g:ycm_python_binary_path = '/usr/bin/python2'
 
 " }}}
 
@@ -188,6 +194,12 @@ if has("persistent_undo")
     set undodir=~/.vim/undodir/
     set undofile
 endif
+
+" Backup files settings -- *.swp handling and storage.
+" See :help backup for these settings
+set nobackup
+set writebackup
+
 "}}}
 
 " Mapping from the Learn Vimscript the hard way fantasy book -----{{{
