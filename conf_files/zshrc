@@ -127,16 +127,18 @@ esac
 # tmux attach &> /dev/null # would allow only one session per user
 
 # Useful if using the same file on more  devices
-if ! [[ -n $SSH_CONNECTION ]]; then
-    tmux 
-fi
+#if ! [[ -n $SSH_CONNECTION ]]; then
+#    tmux 
+#fi
 
 # alias for battery
 alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "time\ to\ "'
 alias bat_raw='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
 
 # alias for gnome-terminal
-alias gnome-terminal='gnome-terminal --hide-menubar --full-screen'
+#alias gnome-terminal='gnome-terminal --hide-menubar --full-screen'
+
+#alias google-chrome-stable='google-chrome-stable --password-store=basic'
 
 # dirty sollution - should change is some time..
 # Thanks to UPC and its shitty router.

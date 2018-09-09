@@ -1,0 +1,20 @@
+
+! Hope to to the trick
+setxkbmap -option caps:escape
+
+! xterm configs
+XTerm.vt100.reverseVideo: true
+XTerm.vt100.faceName: Hack:size=14;antialias=true
+
+
+
+! background setup
+! /usr/bin/feh --bg-scale '~/home/teubl/Picture/coffeeintocode_black.png'&
+
+! Fonts {{{
+ Xft.antialias: true
+ Xft.hinting:   true
+ Xft.rgba:      rgb
+ Xft.hintstyle: hintfull
+ Xft.dpi:       120
+! ! }}}
