@@ -1,6 +1,5 @@
 
 ! Hope to to the trick
-setxkbmap -option caps:escape
 
 ! xterm configs
 XTerm.vt100.reverseVideo: true
@@ -18,3 +17,11 @@ XTerm.vt100.faceName: Hack:size=14;antialias=true
  Xft.hintstyle: hintfull
  Xft.dpi:       120
 ! ! }}}
+
+
+! Language and keyboard setup
+! grp:win_space_toggle
+! caps:escape
+!
+
+
