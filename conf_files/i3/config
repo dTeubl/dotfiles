@@ -9,7 +9,8 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+# set $mod Mod1
+set $mod Mod3
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -17,7 +18,7 @@ set $mod Mod1
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
- font pango:DejaVu Sans Mono 11
+font pango:DejaVu Sans Mono 11
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -31,7 +32,7 @@ floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec xterm -fs 10
+bindsym $mod+Return exec xterm -fs 10 -bg 235 
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -43,11 +44,17 @@ bindsym $mod+d exec dmenu_run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+# split in horizontal orientation
+bindsym $mod+b split horizontal
+
+# split in vertical orientation
+bindsym $mod+v split v
+
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -56,22 +63,16 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
-
-# split in horizontal orientation
-bindsym $mod+h split h
-
-# split in vertical orientation
-bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -170,9 +171,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Additional configuration with X11
-exec "setxkbmap -option caps:escape"
-exec "setxkbmap -layout us,hu"
-exec "setxkbmap -option 'grp:win_space_toggle'"
+# exec_always --no-startup-id "setxkbmap -option caps:escape"
+# exec_always --no-startup-id "setxkbmap -layout us,hu"
+# exec_always --no-startup-id "setxkbmap -option 'grp:win_space_toggle'"
 
 # Volume control setup
 bindsym XF86AudioMute exec pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo toggle 
@@ -186,6 +187,10 @@ bindsym XF86AudioMicMute exec pactl set-source-mute alsa_input.pci-0000_00_1f.3.
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5%
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5%
 
+# Set background
+exec_always "feh --bg-max ~/Pictures/coffeeintocode_black.png"
+
+    
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -193,3 +198,4 @@ bar {
     status_command i3status
     position top
 }
+

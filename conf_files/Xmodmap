@@ -1,0 +1,10 @@
+! This is used to modify modkeys
+!
+! Clear mod keys
+clear mod1
+clear mod3
+
+! add new Mod keys
+add mod1 = Alt_L
+add mod1 = Meta_L
+add mod3 = Escape

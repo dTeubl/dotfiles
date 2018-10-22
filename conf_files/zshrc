@@ -135,6 +135,17 @@ esac
 alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "time\ to\ "'
 alias bat_raw='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
 
+
+# Starts SSH-agent after login. NOTE: This is not the best sollution, but works!
+if [[ "$SSH_AGENT_PID" == "" ]]; then
+    eval "$(ssh-agent)" > /dev/null
+fi
+
+
+# alias for vim to alwasy enable server mode - useful for background tasks
+# like tex-->pdf conversion
+#alias vim='vim --serverame vim'
+
 # alias for gnome-terminal
 #alias gnome-terminal='gnome-terminal --hide-menubar --full-screen'
 
@@ -142,6 +153,6 @@ alias bat_raw='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
 
 # dirty sollution - should change is some time..
 # Thanks to UPC and its shitty router.
-nmcli dev modify wlp1s0 802-11-wireless.mtu 1400 >>/dev/null
+# nmcli dev modify wlp1s0 802-11-wireless.mtu 1400 >>/dev/null
 
 

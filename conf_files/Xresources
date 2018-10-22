@@ -2,8 +2,14 @@
 ! Hope to to the trick
 
 ! xterm configs
+Xterm.termName: xterm-256-color
+
 XTerm.vt100.reverseVideo: true
 XTerm.vt100.faceName: Hack:size=14;antialias=true
+!XTerm.vt100.foreground: white
+!XTerm.vt100.background: gray
+XTerm.vt100.foreground: yellow
+XTerm.vt100.background: black
 
 
 

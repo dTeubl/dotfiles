@@ -95,10 +95,17 @@ let g:ycm_show_diagnostics_ui=1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_register_as_syntastic_checker = 0
+let g:ycm_disable_for_files_larger_than_kb = 10000
 
 " Setup for python3+ check and completion
 let g:ycm_python_binary_path = '/usr/bin/python2'
 
+" }}}
+
+" VIMTEX setups ----------{{{
+"
+let g:vimtex_quickfix_enabled = 0
+let g:vimtex_view_general_viewer = 'evince'
 " }}}
 
 " Movement steups ------{{{            
@@ -309,5 +316,7 @@ function! ResetCtags( )
 endfunction
 
 " }}}
+
+
 
 

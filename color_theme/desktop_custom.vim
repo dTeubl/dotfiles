@@ -9,7 +9,7 @@ if exists("syntax_on")
 endif
 let g:colors_name = "desktop_custom"
 
-hi Normal		ctermbg=Black  ctermfg=white guibg=Black		 guifg=white
+hi Normal		ctermbg=235  ctermfg=white guibg=Black		 guifg=white
 hi Comment		term=bold	   ctermfg=LightRed   guifg=Orange
 hi Constant		term=underline ctermfg=LightGreen guifg=White	gui=NONE
 hi Identifier	term=underline ctermfg=LightCyan  guifg=#00ffff
