@@ -100,7 +100,6 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="$PATH:"~/scripts""
 
-
 alias naut='nautilus . &'
 
 # Add alias for tmux
@@ -140,7 +139,6 @@ alias bat_raw='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
 if [[ "$SSH_AGENT_PID" == "" ]]; then
     eval "$(ssh-agent)" > /dev/null
 fi
-
 
 # alias for vim to alwasy enable server mode - useful for background tasks
 # like tex-->pdf conversion
