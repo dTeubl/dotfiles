@@ -39,6 +39,9 @@ bindsym $mod+t exec xterm -fs 10
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# lock screen -- With the same keys as in other system
+bindsym Mod4+l exec i3lock -f -e --image=/home/teubl/Pictures/Wallpapers/lock_monkey_full.png
+
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
