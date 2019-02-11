@@ -209,6 +209,7 @@ exec_always "feh --bg-max ~/Pictures/coffeeintocode_black.png"
 # finds out, if available)
 bar {
     font pango:DejaVu Sans Mono, Font Awesome 5 Free 11
+    #status_command i3blocks
     status_command i3status
     position top
 }

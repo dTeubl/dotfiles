@@ -256,8 +256,8 @@ nnoremap <F10> :bdelete<CR>
 " Language spell checks --------{{{
 augroup check_lang
     autocmd!
-    autocmd BufWritePost *.md :setlocal spell spelllang=en_us,hu
-    autocmd BufWritePost *.tex :setlocal spell spelllang=en_us,hu
+    autocmd BufWritePost *.md :setlocal spell spelllang=en_us
+    autocmd BufWritePost *.tex :setlocal spell spelllang=en_us
 augroup END
 "}}}
 
