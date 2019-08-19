@@ -144,6 +144,7 @@ fi
 # like tex-->pdf conversion
 #alias vim='vim --serverame vim'
 
+
 # alias for gnome-terminal
 #alias gnome-terminal='gnome-terminal --hide-menubar --full-screen'
 
@@ -152,5 +153,8 @@ fi
 # dirty sollution - should change is some time..
 # Thanks to UPC and its shitty router.
 # nmcli dev modify wlp1s0 802-11-wireless.mtu 1400 >>/dev/null
+
+# alis for xterm 
+alias xterm='xterm -fs 10&'
 
 

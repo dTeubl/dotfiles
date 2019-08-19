@@ -5,7 +5,6 @@
 " Basic setups even before additional plugins are loaded
 set nocompatible                " be iMproved, required
 filetype on                     " required
-syntax enable                   " Better to turn it on.
 set t_Co=256
 set term=screen-256color        " enable 256 color in console mode
 
@@ -54,7 +53,7 @@ Plugin 'NLKNguyen/papercolor-theme'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-" filetype plugin on
+filetype plugin on
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -66,6 +65,8 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 "
 " }}}
+
+syntax enable                   " Better to turn it on.
 
 " AirLine setup ------{{{
 set laststatus=2
@@ -110,6 +111,15 @@ let g:vimtex_compiler_latexmk_engines = {'pdflatex'         : '-pdf'}
 let g:vimtex_compiler_latexmk = { 'background' : 1, 'build_dir' : './build/', 'callback' : 1, 'continuous' : 1, 'executable' : 'latexmk', 'options' : [ '-verbose', '-file-line-error', '-synctex=1', '-interaction=nonstopmode', '-pdf', '-pvc', ], }
 
 " }}}
+
+" Setup for NETRW ----- {{{
+" Just to have som view on the files used on projects
+let g:netrw_banner = 0
+let g:netrw_winsize = 20
+let g:netrw_browse_split = 4
+" let g:netrw_liststyle = 3
+
+"}}}
 
 " Movement steups ------{{{            
 
