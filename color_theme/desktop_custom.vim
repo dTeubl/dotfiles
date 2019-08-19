@@ -21,12 +21,13 @@ hi Statement	term=bold	   ctermfg=Yellow	  guifg=#ffff00 gui=NONE
 hi Type						   ctermfg=LightGreen guifg=grey	gui=none
 hi Error		term=reverse   ctermbg=Red	  ctermfg=White guibg=Red  guifg=White
 hi Todo			term=standout  ctermbg=Yellow ctermfg=Black guifg=Blue guibg=Yellow
+
 " From the source:
 hi Cursor										  guifg=Orchid	guibg=fg
 hi Directory	term=bold	   ctermfg=LightCyan  guifg=Cyan
 hi ErrorMsg		term=standout  ctermbg=DarkRed	  ctermfg=White guibg=Red guifg=White
 hi IncSearch	term=reverse   cterm=reverse	  gui=reverse
-hi LineNr		term=underline ctermfg=Yellow					guifg=Yellow
+hi LineNr		term=underline ctermfg=gray					guifg=Yellow
 hi ModeMsg		term=bold	   cterm=bold		  gui=bold
 hi MoreMsg		term=bold	   ctermfg=LightGreen gui=bold		guifg=SeaGreen
 hi NonText		term=bold	   ctermfg=Blue		  gui=bold		guifg=Blue
@@ -37,3 +38,12 @@ hi StatusLineNC term=reverse   cterm=reverse	  gui=NONE		guifg=white guibg=#3333
 hi Title		term=bold	   ctermfg=LightMagenta gui=bold	guifg=Pink
 hi WarningMsg	term=standout  ctermfg=LightRed   guifg=Red
 hi Visual		term=reverse   cterm=reverse	  gui=NONE		guifg=white guibg=darkgreen
+
+" popup menu
+hi Pmenu ctermbg=black guibg=white ctermfg=white guifg=white term=bold gui=bold
+hi PmenuSel ctermbg=gray guibg=white ctermfg=black guifg=white term=bold gui=bold
+
+
+
+
+
