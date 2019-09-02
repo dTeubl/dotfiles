@@ -8,7 +8,7 @@ filetype on                     " required
 set t_Co=256
 set term=screen-256color        " enable 256 color in console mode
 
-colorscheme desktop_custom
+colorscheme murphy
 
 " If working in light environment
 " set background=light

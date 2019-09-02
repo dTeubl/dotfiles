@@ -43,8 +43,5 @@ fi
 #exec xterm -geometry 80x66+0+0 -name login
 
 # Check monitors and setup dual display
-# kexec set_hdmi.sh
-
-exec i3
-
+# exec set_hdmi.sh
 

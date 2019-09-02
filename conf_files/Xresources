@@ -4,8 +4,9 @@
 ! xterm configs
 Xterm.termName: xterm-256-color
 
+
 !XTerm.vt100.reverseVideo: true
-XTerm.vt100.faceName: Hack:size=14;antialias=true
+XTerm.vt100.faceName:Hack:size=14;antialias=true
 
 ! These color codes are generated via www.terminal.sexy.
 ! The original thema is the default tango with minidmal foreground and background
@@ -63,5 +64,10 @@ XTerm.vt100.faceName: Hack:size=14;antialias=true
 ! grp:win_space_toggle
 ! caps:escape
 !
+
+
+! Config for URXVT 
+URxvt*font: xft:Hack:size=10
+
 
 

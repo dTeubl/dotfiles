@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=/usr/share/oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -103,7 +103,7 @@ export PATH="$PATH:"~/scripts""
 alias naut='nautilus . &'
 
 # Add alias for tmux
-alias tmux='tmux -2 -f /home/teubl/.tmux.conf'
+#alias tmux='tmux -2 -f /home/teubl/.tmux.conf'
 
 #TODO run fbterm only if you def terminal is linux
 case "$TERM" in
@@ -117,8 +117,8 @@ case "$TERM" in
         fi
         ;;
     linux)
-        FBTERM=1 fbterm 
-        [ -n "$FBTERM" ] && export TERM=fbterm
+        #FBTERM=1 fbterm 
+        #[ -n "$FBTERM" ] && export TERM=fbterm
         ;;
 esac
 
@@ -136,9 +136,9 @@ alias bat_raw='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
 
 
 # Starts SSH-agent after login. NOTE: This is not the best sollution, but works!
-if [[ "$SSH_AGENT_PID" == "" ]]; then
-    eval "$(ssh-agent)" > /dev/null
-fi
+#f [[ "$SSH_AGENT_PID" == "" ]]; then
+#    eval "$(ssh-agent)" > /dev/null
+#fi
 
 # alias for vim to alwasy enable server mode - useful for background tasks
 # like tex-->pdf conversion
