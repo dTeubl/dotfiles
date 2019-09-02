@@ -8,7 +8,7 @@ filetype on                     " required
 set t_Co=256
 set term=screen-256color        " enable 256 color in console mode
 
-colorscheme murphy
+colorscheme desktop_custom
 
 " If working in light environment
 " set background=light
@@ -99,7 +99,7 @@ let g:ycm_register_as_syntastic_checker = 0
 let g:ycm_disable_for_files_larger_than_kb = 10000
 
 " Setup for python3+ check and completion
-let g:ycm_python_binary_path = '/usr/bin/python2'
+let g:ycm_python_binary_path = '/usr/bin/python'
 
 " }}}
 

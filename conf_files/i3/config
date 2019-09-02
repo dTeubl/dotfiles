@@ -224,6 +224,9 @@ exec_always "feh --bg-max ~/Pictures/wallpappers/coffeeintocode_black.png"
 # run compton to have shadows and fancy stuff
 exec_always --no-startup-id compton -b
 
+# Darken the screen
+exec_always "xrandr --output eDP-1 --brightness .7"
+
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
