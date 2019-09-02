@@ -2,20 +2,11 @@ dotFiles
 ========
 
 A collection of config files and scripts used on my system:
-+ Hardware: Dell Latitude E5470
-+ OS: Ubuntu 16.04
++ Hardware: Dell Xps 13 (9380)
++ OS: Arch Linux
 
-My aim with these repo - along side to keep safe backup of my files, to create a workspace which run smoothly in pure Linux console - no mouse, no X.
+Screenshot
+==========
 
-Screenshots
-===========
+![screen](./pics/clean.png)
 
-console
--------
-
-![Split Console](./pics/console.png)
-
-Vim
----
-
-![VIM](./pics/vim.png)
