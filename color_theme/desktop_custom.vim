@@ -27,7 +27,8 @@ hi Cursor										  guifg=Orchid	guibg=fg
 hi Directory	term=bold	   ctermfg=LightCyan  guifg=Cyan
 hi ErrorMsg		term=standout  ctermbg=DarkRed	  ctermfg=White guibg=Red guifg=White
 hi IncSearch	term=reverse   cterm=reverse	  gui=reverse
-hi LineNr		term=underline ctermfg=gray					guifg=Yellow
+hi LineNr		term=bold      cterm=bold         ctermfg=gray					guifg=Yellow
+hi CursorLineNr		term=bold      cterm=bold         ctermfg=yellow					guifg=Yellow
 hi ModeMsg		term=bold	   cterm=bold		  gui=bold
 hi MoreMsg		term=bold	   ctermfg=LightGreen gui=bold		guifg=SeaGreen
 hi NonText		term=bold	   ctermfg=Blue		  gui=bold		guifg=Blue

@@ -14,6 +14,10 @@ colorscheme desktop_custom
 " set background=light
 " colorscheme PaperColor
 
+set exrc
+set secure
+
+
 
 " Plugins ----------{{{
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -106,7 +110,7 @@ let g:ycm_python_binary_path = '/usr/bin/python'
 " VIMTEX setups ----------{{{
 "
 let g:vimtex_quickfix_enabled = 0
-let g:vimtex_view_general_viewer = 'evince'
+let g:vimtex_view_general_viewer = 'atril'
 let g:vimtex_compiler_latexmk_engines = {'pdflatex'         : '-pdf'}
 let g:vimtex_compiler_latexmk = { 'background' : 1, 'build_dir' : './build/', 'callback' : 1, 'continuous' : 1, 'executable' : 'latexmk', 'options' : [ '-verbose', '-file-line-error', '-synctex=1', '-interaction=nonstopmode', '-pdf', '-pvc', ], }
 
@@ -266,8 +270,8 @@ nnoremap <F10> :bdelete<CR>
 " Language spell checks --------{{{
 augroup check_lang
     autocmd!
-    autocmd BufWritePost *.md :setlocal spell spelllang=en_us
-    autocmd BufWritePost *.tex :setlocal spell spelllang=en_us
+"     autocmd BufWritePost *.md :setlocal spell spelllang=en_us
+"     autocmd BufWritePost *.tex :setlocal spell spelllang=en_us
 augroup END
 "}}}
 
