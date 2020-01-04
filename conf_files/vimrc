@@ -4,18 +4,26 @@
 
 " Basic setups even before additional plugins are loaded
 set nocompatible                " be iMproved, required
-filetype plugin on                     " required
+
+" Allow syntax highlighting
+syntax on                       
+filetype  on                     " required
 set t_Co=256
 set term=screen-256color        " enable 256 color in console mode
 
+" Disable Ex mode 
+nnoremap Q <Nop>
+
+" Set favourite colos
 colorscheme desktop_custom
 
 " If working in light environment
 " set background=light
 " colorscheme PaperColor
 
-set exrc
-set secure
+" Disables reading other .vimrc like files. It is set due to security reasons.
+" For more info, see :help noexrc.
+set noexrc
 
 
 " Plugins ----------{{{
@@ -69,8 +77,6 @@ filetype plugin on
 "
 " }}}
 
-syntax on                   " Better to turn it on.
-
 " AirLine setup ------{{{
 set laststatus=2
 set t_Co=256
@@ -121,6 +127,7 @@ if has("persistent_undo")
     set undodir=$HOME.".vim/.undodir"
         set undofile
     endif
+
 " relative timestamp
 if !exists('g:undotree_RelativeTimestamp')
     let g:undotree_RelativeTimestamp = 1
@@ -363,5 +370,6 @@ endfunction
 " }}}
 
 
-
+" Force syntax highlight again...
+syntax on                       
 
