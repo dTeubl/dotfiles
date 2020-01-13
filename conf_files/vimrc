@@ -60,6 +60,12 @@ Plugin 'majutsushi/tagbar'
 " If working in an environment with lot of additional light in it
 Plugin 'NLKNguyen/papercolor-theme'
 
+" vim gutentagas, Automatic ctags file handler
+Plugin 'ludovicchabant/vim-gutentags'
+
+" snipMATE -- for easy snippet support
+Plugin 'msanders/snipmate.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -106,9 +112,14 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_register_as_syntastic_checker = 0
 let g:ycm_disable_for_files_larger_than_kb = 10000
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " Setup for python3+ check and completion
 let g:ycm_python_binary_path = '/usr/bin/python'
+
+" Let vertical split help window
+let g:jedi#use_tabs_not_buffers = 1
+
 
 " }}}
 
@@ -277,11 +288,14 @@ nnoremap <F2> :noh<CR>
 nnoremap <F3> :call ResetCtags()<CR>
 
 " Puts the current time to the cursre
-nnoremap <F4> :r !currTime<CR>
+nnoremap <F4> :r !today<CR>
 
 " Used to test the colorscheme file during developement
-nnoremap <F6> :! sudo cp -v ~/progs/tools/dotfiles/color_theme/console_custom.vim /usr/share/vim/vim80/colors/ <CR>
+" nnoremap <F6> :! sudo cp -v ~/progs/tools/dotfiles/color_theme/console_custom.vim /usr/share/vim/vim80/colors/ <CR>
 
+
+" Insert current time - hours: minutes: ms
+nnoremap <F9> :r !now<CR>
 
 " Close the current buffer,
 " TODO rewrite it so it could be used with a N as a
@@ -349,6 +363,13 @@ augroup END
     " \ set autoindent
     " \ set fileformat=unix
 " }}}
+
+" SnipMate Configuration ------- {{{{{ SnipMAte
+"
+" Snippet instertion is at the most useless -- alt-tab combination...
+ino <a-tab> <c-r>=TriggerSnippet()<cr>
+snor <a-tab> <esc>i<right><c-r>=TriggerSnippet()<cr>
+" }}}}}
 
 "=========================== Function used in this file ========================
 
