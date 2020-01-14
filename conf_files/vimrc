@@ -105,7 +105,8 @@ let g:airline#extensions#syntastic#enabled = 1
 
 " YouCompleteMe setups -----------{{{
 " Allows every filetype to be used with YCM
-" let g:ycm_filetype_whitelist = { '*': 1 }
+let g:ycm_filetype_whitelist = { 'python': 1, 'c':1, 'c++':1 }
+let g:ycm_filetype_blacklist = { 'tex':1, 'markdown':1}
 let g:ycm_extra_conf_cim_data = []
 let g:ycm_show_diagnostics_ui=1
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -113,6 +114,7 @@ let g:ycm_confirm_extra_conf = 0
 let g:ycm_register_as_syntastic_checker = 0
 let g:ycm_disable_for_files_larger_than_kb = 10000
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_filetype_specific_completion_to_disable = {'tex':1}
 
 " Setup for python3+ check and completion
 let g:ycm_python_binary_path = '/usr/bin/python'
@@ -130,6 +132,9 @@ let g:vimtex_quickfix_enabled = 0
 let g:vimtex_view_general_viewer = 'atril'
 let g:vimtex_compiler_latexmk_engines = {'pdflatex'         : '-pdf'}
 let g:vimtex_compiler_latexmk = { 'background' : 1, 'build_dir' : './build/', 'callback' : 1, 'continuous' : 1, 'executable' : 'latexmk', 'options' : [ '-verbose', '-file-line-error', '-synctex=1', '-interaction=nonstopmode', '-pdf', '-pvc', ], }
+
+autocmd FileType tex :NoMatchParen
+au FileType tex setlocal nocursorline
 
 " }}}
 
