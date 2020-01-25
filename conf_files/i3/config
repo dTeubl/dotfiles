@@ -212,8 +212,8 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume alsa_output.pci-0000_00_
 bindsym XF86AudioMicMute exec pactl set-source-mute alsa_input.pci-0000_00_1f.3.analog-stereo toggle
 
 # Set screen brightness
-bindsym XF86MonBrightnessUp exec ~/scripts/bright_up.sh
-bindsym XF86MonBrightnessDown exec ~/scripts/bright_down.sh
+bindsym XF86MonBrightnessUp exec ~/scripts/set_bright.py up
+bindsym XF86MonBrightnessDown exec ~/scripts/set_bright.py down
 
 # Fn Play, Prev and Next keys control spotify directly
 bindsym XF86AudioPlay exec ~/scripts/spotify_control playpause
