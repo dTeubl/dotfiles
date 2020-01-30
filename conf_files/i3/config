@@ -199,9 +199,9 @@ bindsym $mod+r mode "resize"
 # exec_always --no-startup-id "setxkbmap -option 'grp:win_space_toggle'"
 
 # Volume control setup
-bindsym XF86AudioMute exec pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo toggle 
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo -5%
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo +5%
+bindsym XF86AudioMute exec ~/scripts/change_vol.py mute
+bindsym XF86AudioLowerVolume exec ~/scripts/change_vol.py down
+bindsym XF86AudioRaiseVolume exec ~/scripts/change_vol.py up
 
 # Alternative way, but it is not working yet
 #bindsym XF86AudioMute exec "mute_vol.sh"
