@@ -243,6 +243,8 @@ exec "ssh-add ~/.ssh/tumgit"
 exec "ssh-add ~/.ssh/flexopflight"
 exec "ssh-add ~/.ssh/github"
 exec "ssh-add ~/.ssh/homerpi"
+exec "ssh-add ~/.ssh/gitlab"
+exec "ssh-add ~/.ssh/gitbucket"
 
 
 
