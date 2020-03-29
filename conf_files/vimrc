@@ -10,6 +10,7 @@ syntax on
 filetype  on                     " required
 set t_Co=256
 set term=screen-256color        " enable 256 color in console mode
+"set path+=**
 
 " Disable Ex mode 
 nnoremap Q <Nop>
@@ -40,7 +41,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
 " YoutCompleteMe
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 
 " Syntastic, for on the fly syntax check
 Plugin 'scrooloose/syntastic'
@@ -55,16 +56,23 @@ Plugin 'mbbill/undotree'
 Plugin 'tpope/vim-fugitive'
 
 " Tagbar to help move around tags created by ctag
-Plugin 'majutsushi/tagbar'
+" Plugin 'majutsushi/tagbar'
 
 " If working in an environment with lot of additional light in it
 Plugin 'NLKNguyen/papercolor-theme'
 
 " vim gutentagas, Automatic ctags file handler
-Plugin 'ludovicchabant/vim-gutentags'
+" Plugin 'ludovicchabant/vim-gutentags'
 
 " snipMATE -- for easy snippet support
 Plugin 'msanders/snipmate.vim'
+
+" PLugins needed to natively run clangd with lsp -- based on Jonas Devlieghere
+Plugin 'prabirshrestha/async.vim'
+Plugin 'prabirshrestha/vim-lsp'
+Plugin 'prabirshrestha/asyncomplete.vim'
+Plugin 'prabirshrestha/asyncomplete-lsp.vim'
+Plugin 'ryanolsonx/vim-lsp-python'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -109,19 +117,24 @@ let g:ycm_filetype_whitelist = { 'python': 1, 'c':1, 'c++':1 }
 let g:ycm_filetype_blacklist = { 'tex':1, 'markdown':1}
 let g:ycm_extra_conf_cim_data = []
 let g:ycm_show_diagnostics_ui=1
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_register_as_syntastic_checker = 0
+" let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_confirm_extra_conf = 1
+let g:ycm_register_as_syntastic_checker = 1
 let g:ycm_disable_for_files_larger_than_kb = 10000
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_filetype_specific_completion_to_disable = {'tex':1}
+let g:ycm_min_num_of_chars_for_completion = 2
+let g:ycm_auto_trigger = 1
 
+" let g:ycm_global_ycm_extra_conf = '.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_clangd_binary_path = "/bin/clangd"
 " Setup for python3+ check and completion
 let g:ycm_python_binary_path = '/usr/bin/python'
 
 " Let vertical split help window
 let g:jedi#use_tabs_not_buffers = 1
-
+" disable clangd server
+" let g:ycm_use_clangd = 0
 
 " }}}
 
@@ -135,6 +148,10 @@ let g:vimtex_compiler_latexmk = { 'background' : 1, 'build_dir' : './build/', 'c
 
 autocmd FileType tex :NoMatchParen
 au FileType tex setlocal nocursorline
+au BufNewFile,BufRead *.tikz set filetype=tex
+au BufNewFile,BufRead *.tex set filetype=tex
+" In case of not enough information to decide, fail for latex
+let g:tex_flavor = "latex"
 
 " }}}
 
@@ -274,10 +291,10 @@ nnoremap - ddp
 nnoremap _ dd2kp
 
 " Set the leader, change later if you find some better
-" let mapleader = "\\"
+let mapleader = "\\"
 
 " edit .vimrc fast in a horizontaly split window
-nnoremap <leader>ev :split ~/.vimrc<CR> 
+noremap <leader>ev :split ~/.vimrc<CR> 
 
 " apply the the current vimrc setup
 nnoremap <leader>sv :source ~/.vimrc<CR>
@@ -351,11 +368,12 @@ augroup Markdown
 augroup END
 " }}}
 
-" Vimscript file settings ----------{{{ augroup FileType_vim
+" Vimscript file settings ----------{{{ 
+augroup FileType_vim
     autocmd!
     " Auto folding for *.vim files
     autocmd FileType vim setlocal foldmethod=marker
-augroup END
+augroup end
 " }}}
 
 " Python file settings ------- {{{ Python files
@@ -375,6 +393,51 @@ augroup END
 ino <a-tab> <c-r>=TriggerSnippet()<cr>
 snor <a-tab> <esc>i<right><c-r>=TriggerSnippet()<cr>
 " }}}}}
+
+
+
+if executable('pyls')
+    " pip install python-language-server
+    au User lsp_setup call lsp#register_server({
+    \ 'name': 'pyls',
+    \ 'cmd': {server_info->['pyls']},
+    \ 'whitelist': ['python'],
+    \ })
+endif
+
+
+            "\ 'cmd': {server_info->['clangd']},
+" For clangd support
+if executable('clangd')
+    augroup lsp_clangd
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+            \ 'name': 'clangd',
+            \ 'cmd': {server_info->['clangd']},
+            \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+            \ })
+        autocmd FileType c setlocal omnifunc=lsp#complete
+        autocmd FileType cpp setlocal omnifunc=lsp#complete
+        autocmd FileType objc setlocal omnifunc=lsp#complete
+        autocmd FileType objcpp setlocal omnifunc=lsp#complete
+    augroup end
+endif
+
+autocmd FileType cpp let b:vmc_tab_complete = "omni"
+
+let g:lsp_highlight_references_enabled = 1
+augroup lsp_cpp
+" nice configurations for lsp support
+    " This should serve for better completion handling --> tab and shift tab,
+    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+    " Useful function to hotkeys
+    noremap <F1> :LspHover<CR>
+    noremap <leader>d :LspDefinition<CR>
+    noremap <leader>e :LspNextDiagnostic<CR>
+    noremap <leader>r :LspRename<CR>
+augroup end
 
 "=========================== Function used in this file ========================
 
@@ -398,4 +461,6 @@ endfunction
 
 " Force syntax highlight again...
 syntax on                       
+au BufNewFile,BufRead *.tikz set filetype=tex
+
 
