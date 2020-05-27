@@ -62,7 +62,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'NLKNguyen/papercolor-theme'
 
 " vim gutentagas, Automatic ctags file handler
-" Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'ludovicchabant/vim-gutentags'
 
 " snipMATE -- for easy snippet support
 Plugin 'msanders/snipmate.vim'
@@ -396,17 +396,7 @@ snor <a-tab> <esc>i<right><c-r>=TriggerSnippet()<cr>
 
 
 
-if executable('pyls')
-    " pip install python-language-server
-    au User lsp_setup call lsp#register_server({
-    \ 'name': 'pyls',
-    \ 'cmd': {server_info->['pyls']},
-    \ 'whitelist': ['python'],
-    \ })
-endif
-
-
-            "\ 'cmd': {server_info->['clangd']},
+    "\ 'cmd': {server_info->['clangd']},
 " For clangd support
 if executable('clangd')
     augroup lsp_clangd
@@ -426,6 +416,8 @@ endif
 autocmd FileType cpp let b:vmc_tab_complete = "omni"
 
 let g:lsp_highlight_references_enabled = 1
+let g:lsp_diagnostics_enabled = 0
+
 augroup lsp_cpp
 " nice configurations for lsp support
     " This should serve for better completion handling --> tab and shift tab,

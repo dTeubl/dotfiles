@@ -245,6 +245,7 @@ exec "ssh-add ~/.ssh/github"
 exec "ssh-add ~/.ssh/homerpi"
 exec "ssh-add ~/.ssh/gitlab"
 exec "ssh-add ~/.ssh/gitbucket"
+exec "ssh-add ~/.ssh/ubi_mbed"
 
 
 

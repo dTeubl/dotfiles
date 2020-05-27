@@ -99,8 +99,12 @@ source $ZSH/oh-my-zsh.sh
 # Here is some etra to add More dirextory to the PATH variable
 
 export PATH="$PATH:"~/scripts""
+# to add some extra pithon thing installed by pip
+export PATH="$PATH:"~/.local/bin""
 
 alias naut='nautilus . &'
+alias mount='mount -o gid=dteubl,fmask=113,dmask=002'
+
 
 # Add alias for tmux
 #alias tmux='tmux -2 -f /home/teubl/.tmux.conf'
