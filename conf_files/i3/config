@@ -59,6 +59,7 @@ bindsym $mod+Shift+q kill
 
 # lock screen -- With the same keys as in other system
 bindsym Mod4+l exec i3lock -f -e -t --image=/home/dteubl/Pictures/wallpappers/img100.png
+# exec --no-startup-id xss-lock -- ~/.config/i3/lock.sh -f -e -t --image=/home/dteubl/Pictures/wallpappers/img100.png
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
@@ -164,7 +165,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -246,6 +247,7 @@ exec "ssh-add ~/.ssh/homerpi"
 exec "ssh-add ~/.ssh/gitlab"
 exec "ssh-add ~/.ssh/gitbucket"
 exec "ssh-add ~/.ssh/ubi_mbed"
+exec "ssh-add ~/.ssh/FoM_Flipased"
 
 
 

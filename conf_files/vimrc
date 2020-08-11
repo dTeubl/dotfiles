@@ -72,6 +72,7 @@ Plugin 'prabirshrestha/async.vim'
 Plugin 'prabirshrestha/vim-lsp'
 Plugin 'prabirshrestha/asyncomplete.vim'
 Plugin 'prabirshrestha/asyncomplete-lsp.vim'
+Plugin 'mattn/vim-lsp-settings'
 Plugin 'ryanolsonx/vim-lsp-python'
 
 " All of your Plugins must be added before the following line
@@ -315,7 +316,6 @@ nnoremap <F4> :r !today<CR>
 " Used to test the colorscheme file during developement
 " nnoremap <F6> :! sudo cp -v ~/progs/tools/dotfiles/color_theme/console_custom.vim /usr/share/vim/vim80/colors/ <CR>
 
-
 " Insert current time - hours: minutes: ms
 nnoremap <F9> :r !now<CR>
 
@@ -413,10 +413,12 @@ if executable('clangd')
     augroup end
 endif
 
-autocmd FileType cpp let b:vmc_tab_complete = "omni"
+" autocmd FileType cpp let b:vmc_tab_complete = "omni"
+set omnifunc=syntaxcomplete#Complete
 
 let g:lsp_highlight_references_enabled = 1
 let g:lsp_diagnostics_enabled = 0
+let g:lsp_async_completion = 1
 
 augroup lsp_cpp
 " nice configurations for lsp support
