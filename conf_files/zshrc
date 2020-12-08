@@ -152,7 +152,7 @@ alias rsync='rsync -vah --progress'
 
 # Alias for joplin terminal 
 # alias joplin='joplin server start & joplin --profile ~/.config/joplin-desktop'
- alias joplin='joplin --profile ~/.config/joplin-desktop'
+alias joplin='joplin --profile ~/.config/joplin-desktop'
 
 # Starts SSH-agent after login. NOTE: This is not the best sollution, but works!
 #f [[ "$SSH_AGENT_PID" == "" ]]; then

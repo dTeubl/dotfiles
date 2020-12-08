@@ -24,8 +24,8 @@ colorscheme desktop_custom
 
 " Disables reading other .vimrc like files. It is set due to security reasons.
 " For more info, see :help noexrc.
-set noexrc
-
+" 
+" set noexrc
 
 " Plugins ----------{{{
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -41,7 +41,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
 " YoutCompleteMe
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 
 " Syntastic, for on the fly syntax check
 Plugin 'scrooloose/syntastic'
@@ -75,6 +75,15 @@ Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 Plugin 'mattn/vim-lsp-settings'
 Plugin 'ryanolsonx/vim-lsp-python'
 
+" Extra plugins for PlantUML sigramms
+Plugin 'scrooloose/vim-slumlord'
+Plugin 'aklt/plantuml-syntax'
+" Mermaid plugings
+Plugin 'zhaozg/vim-diagram'
+" Plugin 'vim-pandoc/vim-pandoc'
+" Plugin 'vim-pandoc/vim-pandoc-syntax'
+" Plugin 'davidhalter/jedi-vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -99,6 +108,7 @@ set ttimeoutlen=50
 let g:airline_theme='dark'
 " let g:airline_theme='light'
 let g:airline_powerline_fonts=1
+let g:airline#extensions#virtualenv#enabled = 1
 let g:ariline#extensions#tabline#enabled=1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
@@ -114,26 +124,26 @@ let g:airline#extensions#syntastic#enabled = 1
 
 " YouCompleteMe setups -----------{{{
 " Allows every filetype to be used with YCM
-let g:ycm_filetype_whitelist = { 'python': 1, 'c':1, 'c++':1 }
+let g:ycm_filetype_whitelist = { 'python': 1, }
 let g:ycm_filetype_blacklist = { 'tex':1, 'markdown':1}
-let g:ycm_extra_conf_cim_data = []
-let g:ycm_show_diagnostics_ui=1
+" let g:ycm_extra_conf_cim_data = []
+" let g:ycm_show_diagnostics_ui=1
 " let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_confirm_extra_conf = 1
-let g:ycm_register_as_syntastic_checker = 1
-let g:ycm_disable_for_files_larger_than_kb = 10000
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_filetype_specific_completion_to_disable = {'tex':1}
-let g:ycm_min_num_of_chars_for_completion = 2
-let g:ycm_auto_trigger = 1
+" let g:ycm_confirm_extra_conf = 1
+" let g:ycm_register_as_syntastic_checker = 1
+" let g:ycm_disable_for_files_larger_than_kb = 10000
+" let g:ycm_autoclose_preview_window_after_insertion = 1
+" let g:ycm_filetype_specific_completion_to_disable = {'tex':1}
+" let g:ycm_min_num_of_chars_for_completion = 2
+" let g:ycm_auto_trigger = 1
 
 " let g:ycm_global_ycm_extra_conf = '.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_clangd_binary_path = "/bin/clangd"
 " Setup for python3+ check and completion
-let g:ycm_python_binary_path = '/usr/bin/python'
+" let g:ycm_python_binary_path = '/usr/bin/python'
 
 " Let vertical split help window
-let g:jedi#use_tabs_not_buffers = 1
+" JEDI-vim confifurations
+ let g:jedi#use_tabs_not_buffers = 1
 " disable clangd server
 " let g:ycm_use_clangd = 0
 
@@ -226,6 +236,10 @@ nnoremap <S-TAB> :bp<ESC>
 " Uncategorized setups -----{{{
 
 " Save or update when hitting the enter in normal mode
+" let fts=['py']
+" if index(fts, &filetype) == -1
+	" nnoremap <ENTER> :w<ENTER>
+" endif
 nnoremap <ENTER> :wa<ENTER>
 
 
@@ -295,7 +309,7 @@ nnoremap _ dd2kp
 let mapleader = "\\"
 
 " edit .vimrc fast in a horizontaly split window
-noremap <leader>ev :split ~/.vimrc<CR> 
+noremap <leader>ev :vsplit ~/.vimrc<CR> 
 
 " apply the the current vimrc setup
 nnoremap <leader>sv :source ~/.vimrc<CR>
@@ -365,6 +379,8 @@ augroup Markdown
     autocmd!
     autocmd FileType markdown nnoremap <buffer> <localleader><s-h> yypVr=
     autocmd FileType markdown nnoremap <buffer> <localleader>h yypVr-
+    noremap <F5> :!pandoc -s -o %:r.pdf *.md ; atril %:r.pdf&<CR><CR>
+    noremap <F12> :!mmdc -i % -o %:r.png<CR><CR>
 augroup END
 " }}}
 
@@ -394,7 +410,13 @@ ino <a-tab> <c-r>=TriggerSnippet()<cr>
 snor <a-tab> <esc>i<right><c-r>=TriggerSnippet()<cr>
 " }}}}}
 
-
+if executable('texlab')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'texlab',
+        \ 'cmd': {server_info->['texlab']},
+        \ 'whitelist': ['tex', 'bib', 'sty'],
+        \ })
+endif
 
     "\ 'cmd': {server_info->['clangd']},
 " For clangd support
@@ -420,18 +442,20 @@ let g:lsp_highlight_references_enabled = 1
 let g:lsp_diagnostics_enabled = 0
 let g:lsp_async_completion = 1
 
-augroup lsp_cpp
-" nice configurations for lsp support
-    " This should serve for better completion handling --> tab and shift tab,
-    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-    inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
-    " Useful function to hotkeys
-    noremap <F1> :LspHover<CR>
-    noremap <leader>d :LspDefinition<CR>
-    noremap <leader>e :LspNextDiagnostic<CR>
-    noremap <leader>r :LspRename<CR>
-augroup end
+if executable('clangd')
+    augroup lsp_cpp
+    " nice configurations for lsp support
+        " This should serve for better completion handling --> tab and shift tab,
+        inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+        inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+        inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+        " Useful function to hotkeys
+        noremap <F1> :LspHover<CR>
+        noremap <leader>d :LspDefinition<CR>
+        noremap <leader>e :LspNextDiagnostic<CR>
+        noremap <leader>r :LspRename<CR>
+    augroup end
+endif
 
 "=========================== Function used in this file ========================
 

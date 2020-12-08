@@ -61,6 +61,9 @@ bindsym $mod+Shift+q kill
 bindsym Mod4+l exec i3lock -f -e -t --image=/home/dteubl/Pictures/wallpappers/img100.png
 # exec --no-startup-id xss-lock -- ~/.config/i3/lock.sh -f -e -t --image=/home/dteubl/Pictures/wallpappers/img100.png
 
+
+bindsym Mod4+s exec systemctl suspend
+
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -238,15 +241,16 @@ exec_always "xset s off"
 
 # Run nm-applet
 exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id udiskie -t -a -N
+
 
 # Add important ssh-key at startup
+# Is there a better way for this?
 exec "ssh-add ~/.ssh/tumgit"
 exec "ssh-add ~/.ssh/flexopflight"
 exec "ssh-add ~/.ssh/github"
-exec "ssh-add ~/.ssh/homerpi"
 exec "ssh-add ~/.ssh/gitlab"
-exec "ssh-add ~/.ssh/gitbucket"
-exec "ssh-add ~/.ssh/ubi_mbed"
 exec "ssh-add ~/.ssh/FoM_Flipased"
 
 
