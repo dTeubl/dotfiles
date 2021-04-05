@@ -41,10 +41,10 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
 " YoutCompleteMe
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 
 " Syntastic, for on the fly syntax check
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 
 " LaTeX prlugin
 Plugin 'lervag/vimtex'
@@ -73,7 +73,7 @@ Plugin 'prabirshrestha/vim-lsp'
 Plugin 'prabirshrestha/asyncomplete.vim'
 Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 Plugin 'mattn/vim-lsp-settings'
-Plugin 'ryanolsonx/vim-lsp-python'
+" Plugin 'ryanolsonx/vim-lsp-python'
 
 " Extra plugins for PlantUML sigramms
 Plugin 'scrooloose/vim-slumlord'
@@ -139,7 +139,7 @@ let g:ycm_filetype_blacklist = { 'tex':1, 'markdown':1}
 
 " let g:ycm_global_ycm_extra_conf = '.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 " Setup for python3+ check and completion
-" let g:ycm_python_binary_path = '/usr/bin/python'
+let g:ycm_python_binary_path = '/usr/bin/python'
 
 " Let vertical split help window
 " JEDI-vim confifurations
@@ -441,6 +441,7 @@ set omnifunc=syntaxcomplete#Complete
 let g:lsp_highlight_references_enabled = 1
 let g:lsp_diagnostics_enabled = 0
 let g:lsp_async_completion = 1
+
 
 if executable('clangd')
     augroup lsp_cpp

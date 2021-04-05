@@ -31,3 +31,5 @@
     old = "bold yellow"
     new = "bold green"
 
+[init]
+	defaultBranch = main
