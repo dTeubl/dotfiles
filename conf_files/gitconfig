@@ -1,8 +1,8 @@
 [user]
-	name = Dani Teubl
+	name = Daniel Teubl
     email = teubl.dani@gmail.com
 [core]
-	editor = vim
+	editor = nvim
 
 [diff]
 	mnemonicprefix = true
@@ -33,3 +33,10 @@
 
 [init]
 	defaultBranch = main
+[credential]
+	helper = store
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process

@@ -57,10 +57,9 @@ plugins=(git)
 POWERLINE_RIGHT_B="none"
 
 POWERLINE_PATH="short"
-POWERLINE_CUSTOM_CURRENT_PATH="%1~"
 
-# POWERLINE_HIDE_USER_NAME="true"
-POWERLINE_SHORT_HOST_NAME="true"
+POWERLINE_HIDE_USER_NAME="true"
+# POWERLINE_SHORT_HOST_NAME="true"
 
 POWERLINE_DETECT_SSH="true"
 POWERLINE_SHOW_GIT_ON_RIGHT="true"
@@ -175,5 +174,8 @@ alias joplin='joplin --profile ~/.config/joplin-desktop'
 
 # alis for xterm 
 alias xterm='xterm -fs 10&'
+alias vim='nvim'
+
+
 
 

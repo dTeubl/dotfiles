@@ -9,7 +9,8 @@ set nocompatible                " be iMproved, required
 syntax on                       
 filetype  on                     " required
 set t_Co=256
-set term=screen-256color        " enable 256 color in console mode
+" 
+" set term=screen-256color        " enable 256 color in console mode
 "set path+=**
 
 " Disable Ex mode 
@@ -17,6 +18,7 @@ nnoremap Q <Nop>
 
 " Set favourite colos
 colorscheme desktop_custom
+
 
 " If working in light environment
 " set background=light
@@ -53,19 +55,23 @@ Plugin 'lervag/vimtex'
 Plugin 'mbbill/undotree'
 
 " fugitive plugin to see git status and branches via airline
-Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-fugitive'
 
 " Tagbar to help move around tags created by ctag
-" Plugin 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'
 
 " If working in an environment with lot of additional light in it
-Plugin 'NLKNguyen/papercolor-theme'
+" Plugin 'NLKNguyen/papercolor-theme'
 
 " vim gutentagas, Automatic ctags file handler
 Plugin 'ludovicchabant/vim-gutentags'
 
 " snipMATE -- for easy snippet support
-Plugin 'msanders/snipmate.vim'
+" Plugin 'msanders/snipmate.vim'
+
+Plugin 'vim-syntastic/syntastic'
+Plugin 'rhysd/vim-clang-format'
+
 
 " PLugins needed to natively run clangd with lsp -- based on Jonas Devlieghere
 Plugin 'prabirshrestha/async.vim'
@@ -76,10 +82,10 @@ Plugin 'mattn/vim-lsp-settings'
 " Plugin 'ryanolsonx/vim-lsp-python'
 
 " Extra plugins for PlantUML sigramms
-Plugin 'scrooloose/vim-slumlord'
-Plugin 'aklt/plantuml-syntax'
+" Plugin 'scrooloose/vim-slumlord'
+" Plugin 'aklt/plantuml-syntax'
 " Mermaid plugings
-Plugin 'zhaozg/vim-diagram'
+" Plugin 'zhaozg/vim-diagram'
 " Plugin 'vim-pandoc/vim-pandoc'
 " Plugin 'vim-pandoc/vim-pandoc-syntax'
 " Plugin 'davidhalter/jedi-vim'
@@ -116,9 +122,27 @@ let g:airline#extensions#tabline#fnamemod = ':.'
 let g:airline#extensions#wordcount#enabled = 0
 let g:airline_detect_spell=1
 let g:airline_section_z = airline#section#create(['%3p%%', ':%3v'])
+let g:airline_section_warning=''
+let g:airline_section_error=''
 
 " Recomended setup for Syntastic.
-let g:airline#extensions#syntastic#enabled = 1
+"let g:airline#extensions#syntastic#enabled = 1
+"let g:syntastic_python_checkers = ['pylint']
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+
+let g:syntastic_cpp_checkers = ['cpplint']
+let g:syntastic_c_checkers = ['cpplint']
+let g:syntastic_cpp_cpplint_exec = 'cpplint'
+" The following two lines are optional. Configure it to your liking!
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " }}}
 
@@ -155,7 +179,8 @@ au BufNewFile,BufRead *.tikz set filetype=tex
 let g:vimtex_quickfix_enabled = 0
 let g:vimtex_view_general_viewer = 'atril'
 let g:vimtex_compiler_latexmk_engines = {'pdflatex'         : '-pdf'}
-let g:vimtex_compiler_latexmk = { 'background' : 1, 'build_dir' : './build/', 'callback' : 1, 'continuous' : 1, 'executable' : 'latexmk', 'options' : [ '-verbose', '-file-line-error', '-synctex=1', '-interaction=nonstopmode', '-pdf', '-pvc', ], }
+let g:vimtex_compiler_latexmk = { 'background' : 1, 'build_dir' : './build/', 'callback' : 1, 'continuous' : 1, 'executable' : 'latexmk', 'options' : [ '-shell-escape', '-verbose', '-file-line-error', '-synctex=1', '-interaction=nonstopmode', '-pdf', '-pvc', ], }
+let g:vimtex_view_skim_activate=1
 
 autocmd FileType tex :NoMatchParen
 au FileType tex setlocal nocursorline
@@ -227,6 +252,11 @@ vnoremap L g$
 nnoremap H g0
 vnoremap H g0
 
+" better movement between windows
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " Remaps in normal mode to change buffer
 nnoremap <TAB> :bn<ESC>
@@ -379,7 +409,7 @@ augroup Markdown
     autocmd!
     autocmd FileType markdown nnoremap <buffer> <localleader><s-h> yypVr=
     autocmd FileType markdown nnoremap <buffer> <localleader>h yypVr-
-    noremap <F5> :!pandoc -s -o %:r.pdf *.md ; atril %:r.pdf&<CR><CR>
+    noremap <F5> :!pandoc -s -o %:r.pdf %:r.md ; atril %:r.pdf&<CR><CR>
     noremap <F12> :!mmdc -i % -o %:r.png<CR><CR>
 augroup END
 " }}}
@@ -443,6 +473,14 @@ let g:lsp_diagnostics_enabled = 0
 let g:lsp_async_completion = 1
 
 
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+
+let g:clang_format#auto_format = 1
+let g:clang_format#code_style = "llvm"
+
+
 if executable('clangd')
     augroup lsp_cpp
     " nice configurations for lsp support
@@ -455,8 +493,21 @@ if executable('clangd')
         noremap <leader>d :LspDefinition<CR>
         noremap <leader>e :LspNextDiagnostic<CR>
         noremap <leader>r :LspRename<CR>
+        noremap <leader>p :LspPeekDefinition<CR>
+        noremap <leader>t :LspAddTreeCallHierarchyIncoming<CR>
+        noremap <leader>n :cnext<CR>
+        noremap <leader>N :cNext<CR>
     augroup end
 endif
+
+" compile for plantuml
+autocmd BufNewFile,BufRead *.puml noremap <F5> :! plantuml -tlatex ./% && cp -v ./%:r.latex ./%:r.tex <CR><CR>
+
+
+
+" Additional setting for neovim
+set guicursor=
+
 
 "=========================== Function used in this file ========================
 
@@ -478,8 +529,5 @@ endfunction
 " }}}
 
 
-" Force syntax highlight again...
-syntax on                       
-au BufNewFile,BufRead *.tikz set filetype=tex
 
 
