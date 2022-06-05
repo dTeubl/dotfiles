@@ -42,12 +42,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-" YoutCompleteMe
-" Plugin 'Valloric/YouCompleteMe'
-
-" Syntastic, for on the fly syntax check
-" Plugin 'scrooloose/syntastic'
-
 " LaTeX prlugin
 Plugin 'lervag/vimtex'
 
@@ -69,7 +63,7 @@ Plugin 'ludovicchabant/vim-gutentags'
 " snipMATE -- for easy snippet support
 " Plugin 'msanders/snipmate.vim'
 
-Plugin 'vim-syntastic/syntastic'
+" Plugin 'vim-syntastic/syntastic'
 Plugin 'rhysd/vim-clang-format'
 
 
@@ -79,7 +73,11 @@ Plugin 'prabirshrestha/vim-lsp'
 Plugin 'prabirshrestha/asyncomplete.vim'
 Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 Plugin 'mattn/vim-lsp-settings'
-" Plugin 'ryanolsonx/vim-lsp-python'
+
+Plugin 'dense-analysis/ale'
+
+"Plugin 'zchee/deoplete-jedi' " Python autocompletion
+Plugin 'davidhalter/jedi-vim'
 
 " Extra plugins for PlantUML sigramms
 " Plugin 'scrooloose/vim-slumlord'
@@ -88,7 +86,6 @@ Plugin 'mattn/vim-lsp-settings'
 " Plugin 'zhaozg/vim-diagram'
 " Plugin 'vim-pandoc/vim-pandoc'
 " Plugin 'vim-pandoc/vim-pandoc-syntax'
-" Plugin 'davidhalter/jedi-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -148,8 +145,8 @@ let g:syntastic_check_on_wq = 0
 
 " YouCompleteMe setups -----------{{{
 " Allows every filetype to be used with YCM
-let g:ycm_filetype_whitelist = { 'python': 1, }
-let g:ycm_filetype_blacklist = { 'tex':1, 'markdown':1}
+" let g:ycm_filetype_whitelist = { 'python': 1, }
+" let g:ycm_filetype_blacklist = { 'tex':1, 'markdown':1}
 " let g:ycm_extra_conf_cim_data = []
 " let g:ycm_show_diagnostics_ui=1
 " let g:ycm_collect_identifiers_from_tags_files = 1
@@ -163,11 +160,11 @@ let g:ycm_filetype_blacklist = { 'tex':1, 'markdown':1}
 
 " let g:ycm_global_ycm_extra_conf = '.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 " Setup for python3+ check and completion
-let g:ycm_python_binary_path = '/usr/bin/python'
+" let g:ycm_python_binary_path = '/usr/bin/python'
 
 " Let vertical split help window
 " JEDI-vim confifurations
- let g:jedi#use_tabs_not_buffers = 1
+ " let g:jedi#use_tabs_not_buffers = 1
 " disable clangd server
 " let g:ycm_use_clangd = 0
 
@@ -373,8 +370,8 @@ nnoremap <F10> :bdelete<CR>
 " Language spell checks --------{{{
 augroup check_lang
     autocmd!
-"     autocmd BufWritePost *.md :setlocal spell spelllang=en_us
-"     autocmd BufWritePost *.tex :setlocal spell spelllang=en_us
+     autocmd BufWritePost *.md :setlocal spell spelllang=en_us
+     autocmd BufWritePost *.tex :setlocal spell spelllang=en_us
 augroup END
 "}}}
 
@@ -423,14 +420,24 @@ augroup end
 " }}}
 
 " Python file settings ------- {{{ Python files
-" au BufNewFile,BufRead *.py
-    " \ set tabstop=4
-    " \ set softtabstop=4
-    " \ set shiftwidth=4
-    " \ set textwidth=79
-    " \ set expandtab
-    " \ set autoindent
-    " \ set fileformat=unix
+au BufNewFile,BufRead *.py set tabstop=4
+au BufNewFile,BufRead *.py set softtabstop=4
+au BufNewFile,BufRead *.py set shiftwidth=4
+au BufNewFile,BufRead *.py set expandtab
+au BufNewFile,BufRead *.py set autoindent
+au BufNewFile,BufRead *.py set fileformat=unix
+au BufNewFile,BufRead *.py set encoding=utf-8
+" }}}
+
+let g:loaded_python_provider = 0
+let g:python3_host_prog = '/usr/bin/python'
+
+" ALE configuration ----- {{{ Ale Config
+let g:airline#extensions#ale#enabled = 1
+let g:ale_completion_enabled = 1
+set omnifunc=ale#completion#OmniFunc
+
+
 " }}}
 
 " SnipMate Configuration ------- {{{{{ SnipMAte
@@ -448,7 +455,6 @@ if executable('texlab')
         \ })
 endif
 
-    "\ 'cmd': {server_info->['clangd']},
 " For clangd support
 if executable('clangd')
     augroup lsp_clangd
@@ -471,7 +477,6 @@ set omnifunc=syntaxcomplete#Complete
 let g:lsp_highlight_references_enabled = 1
 let g:lsp_diagnostics_enabled = 0
 let g:lsp_async_completion = 1
-
 
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
@@ -503,6 +508,10 @@ endif
 " compile for plantuml
 autocmd BufNewFile,BufRead *.puml noremap <F5> :! plantuml -tlatex ./% && cp -v ./%:r.latex ./%:r.tex <CR><CR>
 
+" This should serve for better completion handling --> tab and shift tab,
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
 
 " Additional setting for neovim
