@@ -65,7 +65,8 @@ Plugin 'ludovicchabant/vim-gutentags'
 
 " Plugin 'vim-syntastic/syntastic'
 Plugin 'rhysd/vim-clang-format'
-
+" Autoformat python with black
+Plugin 'averms/black-nvim'
 
 " PLugins needed to natively run clangd with lsp -- based on Jonas Devlieghere
 Plugin 'prabirshrestha/async.vim'
@@ -78,6 +79,7 @@ Plugin 'dense-analysis/ale'
 
 "Plugin 'zchee/deoplete-jedi' " Python autocompletion
 Plugin 'davidhalter/jedi-vim'
+
 
 " Extra plugins for PlantUML sigramms
 " Plugin 'scrooloose/vim-slumlord'
@@ -267,7 +269,7 @@ nnoremap <S-TAB> :bp<ESC>
 " if index(fts, &filetype) == -1
 	" nnoremap <ENTER> :w<ENTER>
 " endif
-nnoremap <ENTER> :wa<ENTER>
+nmap <ENTER> :wa<ENTER>
 
 
 " Tab size setup
@@ -428,6 +430,8 @@ au BufNewFile,BufRead *.py set autoindent
 au BufNewFile,BufRead *.py set fileformat=unix
 au BufNewFile,BufRead *.py set encoding=utf-8
 " }}}
+
+autocmd Filetype python nnoremap <ENTER> :Black<cr>:wa<cr>
 
 let g:loaded_python_provider = 0
 let g:python3_host_prog = '/usr/bin/python'
