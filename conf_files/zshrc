@@ -176,6 +176,6 @@ alias joplin='joplin --profile ~/.config/joplin-desktop'
 alias xterm='xterm -fs 10&'
 alias vim='nvim'
 
-
+EDITOR='nvim'
 
 

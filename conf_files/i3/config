@@ -244,6 +244,7 @@ exec_always "xset s off"
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id udiskie -t -a -N
+exec --no-startup-id redshift-gtk
 
 
 # Add important ssh-key at startup
