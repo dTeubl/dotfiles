@@ -80,6 +80,7 @@ Plugin 'dense-analysis/ale'
 "Plugin 'zchee/deoplete-jedi' " Python autocompletion
 Plugin 'davidhalter/jedi-vim'
 
+Plugin 'jalvesaq/Nvim-R'
 
 " Extra plugins for PlantUML sigramms
 " Plugin 'scrooloose/vim-slumlord'

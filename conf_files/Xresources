@@ -6,7 +6,7 @@ Xterm.termName: xterm-256-color
 
 
 !XTerm.vt100.reverseVideo: true
-XTerm.vt100.faceName:Hack:size=14;antialias=true
+XTerm.vt100.faceName:Hack:size=10;antialias=true
 
 ! These color codes are generated via www.terminal.sexy.
 ! The original thema is the default tango with minidmal foreground and background
@@ -21,7 +21,7 @@ XTerm.vt100.faceName:Hack:size=14;antialias=true
 *.color8:       #555753
 
 ! red
-*.color1:       #cc0000
+*.color1:       #cc6600
 *.color9:       #ef2929
 
 ! green
@@ -68,6 +68,11 @@ XTerm.vt100.faceName:Hack:size=14;antialias=true
 
 ! Config for URXVT 
 URxvt*font: xft:Hack:size=10
+URxvt*scrollBar: false
+URxvt*visualBerll: true
+URxvt*fading: 15
+!URxvt*shading: 0
+URxvt*transparent: false
 
 xterm*VT100.Translations: #override \
                  Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
