@@ -173,7 +173,8 @@ alias joplin='joplin --profile ~/.config/joplin-desktop'
 # nmcli dev modify wlp1s0 802-11-wireless.mtu 1400 >>/dev/null
 
 # alis for xterm 
-alias xterm='xterm -fs 10&'
+alias term='urxvt&'
+alias xterm='term'
 alias vim='nvim'
 
 EDITOR='nvim'

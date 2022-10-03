@@ -77,10 +77,11 @@ Plugin 'mattn/vim-lsp-settings'
 
 Plugin 'dense-analysis/ale'
 
-"Plugin 'zchee/deoplete-jedi' " Python autocompletion
 Plugin 'davidhalter/jedi-vim'
 
-Plugin 'jalvesaq/Nvim-R'
+" Plugin 'jalvesaq/Nvim-R'
+Plugin 'jpalardy/vim-slime'
+Plugin 'hanschen/vim-ipython-cell'
 
 " Extra plugins for PlantUML sigramms
 " Plugin 'scrooloose/vim-slumlord'
@@ -518,6 +519,17 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
+
+
+" setting for ipython
+" Use tmux
+let g:slime_target = 'x11'
+
+" fix paste issues in ipython
+let g:slime_python_ipython = 1
+let g:slime_dont_ask_default = 1
+
+nnoremap <A-ENTER> :SlimeSend<CR>
 
 " Additional setting for neovim
 set guicursor=
