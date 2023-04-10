@@ -91,6 +91,8 @@ Plugin 'hanschen/vim-ipython-cell'
 " Plugin 'vim-pandoc/vim-pandoc'
 " Plugin 'vim-pandoc/vim-pandoc-syntax'
 
+Plugin 'JuliaEditorSupport/julia-vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -441,6 +443,8 @@ let g:python3_host_prog = '/usr/bin/python'
 " ALE configuration ----- {{{ Ale Config
 let g:airline#extensions#ale#enabled = 1
 let g:ale_completion_enabled = 1
+let g:ale_virtualtext_cursor = "error"
+let g:ale_cpp_cc_options = "std=c++20 -Wall -Weffc++ -pedantic"
 set omnifunc=ale#completion#OmniFunc
 
 
@@ -506,6 +510,7 @@ if executable('clangd')
         noremap <leader>r :LspRename<CR>
         noremap <leader>p :LspPeekDefinition<CR>
         noremap <leader>t :LspAddTreeCallHierarchyIncoming<CR>
+        noremap <leader>f :LspReferences<CR>
         noremap <leader>n :cnext<CR>
         noremap <leader>N :cNext<CR>
     augroup end
