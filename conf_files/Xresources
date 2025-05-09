@@ -57,6 +57,7 @@ XTerm.vt100.faceName:Hack:size=10;antialias=true
  Xft.rgba:      rgb
  Xft.hintstyle: hintfull
  Xft.dpi:       132
+! Xft.dpi:       96
 ! ! }}}
 
 
@@ -73,6 +74,8 @@ URxvt*visualBerll: true
 URxvt*fading: 15
 !URxvt*shading: 0
 URxvt*transparent: false
+
+xterm*selecToClipboard: true
 
 xterm*VT100.Translations: #override \
                  Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\

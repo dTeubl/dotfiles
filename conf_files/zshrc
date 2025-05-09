@@ -109,6 +109,14 @@ bindkey -v
 export PATH="$PATH:"~/scripts""
 # to add some extra pithon thing installed by pip
 export PATH="$PATH:"~/.local/bin""
+#export PATH="$PATH:"~/tools/clion/clion-2022.3.2/bin""
+export PATH="$PATH:"/usr/lib/jvm/java-17-openjdk""
+export PATH="$PATH:"/lib/qt6/bin""
+export PATH="$PATH:"/lib/qt6""
+
+export JAVA_HOME="/usr/lib/jvm/java-17-openjdk"
+export PATH=$JAVA_HOME/bin/:$PATH
+export PATH="/home/dteubl/.cargo/bin"/:$PATH
 
 alias naut='nautilus . &'
 alias mount='mount -o gid=dteubl,fmask=113,dmask=002'
@@ -154,9 +162,9 @@ alias rsync='rsync -vah --progress'
 alias joplin='joplin --profile ~/.config/joplin-desktop'
 
 # Starts SSH-agent after login. NOTE: This is not the best sollution, but works!
-#f [[ "$SSH_AGENT_PID" == "" ]]; then
-#    eval "$(ssh-agent)" > /dev/null
-#fi
+if [[ "$SSH_AGENT_PID" == "" ]]; then
+    eval "$(ssh-agent)" > /dev/null
+fi
 
 # alias for vim to alwasy enable server mode - useful for background tasks
 # like tex-->pdf conversion
@@ -179,4 +187,6 @@ alias vim='nvim'
 
 EDITOR='nvim'
 
+ssh-add ~/.ssh/tumgit 2> /dev/null
+ssh-add ~/.ssh/github 2> /dev/null
 

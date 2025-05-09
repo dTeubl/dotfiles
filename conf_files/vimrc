@@ -55,7 +55,7 @@ Plugin 'mbbill/undotree'
 Plugin 'majutsushi/tagbar'
 
 " If working in an environment with lot of additional light in it
-" Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'NLKNguyen/papercolor-theme'
 
 " vim gutentagas, Automatic ctags file handler
 Plugin 'ludovicchabant/vim-gutentags'
@@ -93,6 +93,16 @@ Plugin 'hanschen/vim-ipython-cell'
 
 Plugin 'JuliaEditorSupport/julia-vim'
 
+Plugin 'gennaro-tedesco/nvim-jqx'
+
+"Plugin 'quarto-dev/quarto-nvim'
+"Plugin 'quarto-dev/quarto-vim'
+" Plugin 'vim-pandoc/vim-pandoc-syntax'
+
+Plugin 'andrejlevkovitch/vim-lua-format'
+Plugin 'qaiviq/vim-imager'
+
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -109,6 +119,7 @@ filetype plugin on
 " Put your non-Plugin stuff after this line
 "
 " }}}
+
 
 " AirLine setup ------{{{
 set laststatus=2
@@ -180,9 +191,9 @@ let g:syntastic_check_on_wq = 0
 "
 au BufNewFile,BufRead *.tikz set filetype=tex
 let g:vimtex_quickfix_enabled = 0
-let g:vimtex_view_general_viewer = 'atril'
+let g:vimtex_view_general_viewer = 'evince'
 let g:vimtex_compiler_latexmk_engines = {'pdflatex'         : '-pdf'}
-let g:vimtex_compiler_latexmk = { 'background' : 1, 'build_dir' : './build/', 'callback' : 1, 'continuous' : 1, 'executable' : 'latexmk', 'options' : [ '-shell-escape', '-verbose', '-file-line-error', '-synctex=1', '-interaction=nonstopmode', '-pdf', '-pvc', ], }
+let g:vimtex_compiler_latexmk = { 'background' : 1, 'aux_dir' : './build','out_dir' : './', 'callback' : 1, 'continuous' : 1, 'executable' : 'latexmk', 'options' : [ '-shell-escape', '-verbose', '-time', '-file-line-error', '-synctex=1', '-interaction=nonstopmode', '-pdf' ], }
 let g:vimtex_view_skim_activate=1
 
 autocmd FileType tex :NoMatchParen
@@ -377,7 +388,7 @@ nnoremap <F10> :bdelete<CR>
 augroup check_lang
     autocmd!
      autocmd BufWritePost *.md :setlocal spell spelllang=en_us
-     autocmd BufWritePost *.tex :setlocal spell spelllang=en_us
+     autocmd BufWritePost *.tex :setlocal spell spelllang=en_gb
 augroup END
 "}}}
 
@@ -496,8 +507,8 @@ let g:clang_format#auto_format = 1
 let g:clang_format#code_style = "llvm"
 
 
-if executable('clangd')
-    augroup lsp_cpp
+if executable('clangd') || executable('pylsp-all')
+    augroup lsp_keys
     " nice configurations for lsp support
         " This should serve for better completion handling --> tab and shift tab,
         inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -511,10 +522,10 @@ if executable('clangd')
         noremap <leader>p :LspPeekDefinition<CR>
         noremap <leader>t :LspAddTreeCallHierarchyIncoming<CR>
         noremap <leader>f :LspReferences<CR>
-        noremap <leader>n :cnext<CR>
-        noremap <leader>N :cNext<CR>
     augroup end
 endif
+noremap <leader>n :cnext<CR>
+noremap <leader>N :cNext<CR>
 
 " compile for plantuml
 autocmd BufNewFile,BufRead *.puml noremap <F5> :! plantuml -tlatex ./% && cp -v ./%:r.latex ./%:r.tex <CR><CR>
@@ -538,6 +549,14 @@ nnoremap <A-ENTER> :SlimeSend<CR>
 
 " Additional setting for neovim
 set guicursor=
+
+" Auto format Lua
+autocmd BufWrite *.lua call LuaFormat()
+
+let g:imager#filetypes = ['.tex','.md']
+let g:imager#all_filetypes = 1
+
+
 
 
 "=========================== Function used in this file ========================
