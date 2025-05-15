@@ -6,14 +6,14 @@
 set nocompatible                " be iMproved, required
 
 " Allow syntax highlighting
-syntax on                       
+syntax on
 filetype  on                     " required
 set t_Co=256
-" 
+"
 " set term=screen-256color        " enable 256 color in console mode
 "set path+=**
 
-" Disable Ex mode 
+" Disable Ex mode
 nnoremap Q <Nop>
 
 " Set favourite colos
@@ -26,7 +26,7 @@ colorscheme desktop_custom
 
 " Disables reading other .vimrc like files. It is set due to security reasons.
 " For more info, see :help noexrc.
-" 
+"
 " set noexrc
 
 " Plugins ----------{{{
@@ -124,7 +124,7 @@ filetype plugin on
 " AirLine setup ------{{{
 set laststatus=2
 set t_Co=256
-set ttimeoutlen=50  
+set ttimeoutlen=50
 let g:airline_theme='dark'
 " let g:airline_theme='light'
 let g:airline_powerline_fonts=1
@@ -231,7 +231,7 @@ endif
 " let g:netrw_liststyle = 3
 "}}}
 
-" Movement steups ------{{{            
+" Movement steups ------{{{
 
 " Let j k behave on line not on paraghraph
 nnoremap j gj
@@ -262,7 +262,7 @@ inoremap <down> <nop>
 nnoremap L g$
 vnoremap L g$
 
-" Jump to the beginning of the screen of the current line 
+" Jump to the beginning of the screen of the current line
 nnoremap H g0
 vnoremap H g0
 
@@ -298,7 +298,7 @@ set expandtab
 " Put extra information into the main line
 set wildmenu
 
-" Highligth search 
+" Highligth search
 set hlsearch
 " Show search result on the fiy
 set incsearch
@@ -307,7 +307,7 @@ set ignorecase
 set smartcase
 
 " Repeate function in visula mode setup
-vnoremap . :normal . <cr>   
+vnoremap . :normal . <cr>
 
 " Let's reload file automatically which modified outside vim
 set autoread
@@ -353,7 +353,7 @@ nnoremap _ dd2kp
 let mapleader = "\\"
 
 " edit .vimrc fast in a horizontaly split window
-noremap <leader>ev :vsplit ~/.vimrc<CR> 
+noremap <leader>ev :vsplit ~/.vimrc<CR>
 
 " apply the the current vimrc setup
 nnoremap <leader>sv :source ~/.vimrc<CR>
@@ -428,7 +428,7 @@ augroup Markdown
 augroup END
 " }}}
 
-" Vimscript file settings ----------{{{ 
+" Vimscript file settings ----------{{{
 augroup FileType_vim
     autocmd!
     " Auto folding for *.vim files
@@ -566,7 +566,7 @@ let g:imager#all_filetypes = 1
 "   let @x = system("rm -v tags")
 "   let @y = system("ctags -R ./src")
 "
-" I keep the tags file in the project directory, and open vim from there, 
+" I keep the tags file in the project directory, and open vim from there,
 " and keep the source files in './src', the header files in the './src/inc'.
 function! ResetCtags( )
     if filereadable(".generateTags.vim")

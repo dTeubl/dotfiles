@@ -56,8 +56,8 @@ XTerm.vt100.faceName:Hack:size=10;antialias=true
  Xft.hinting:   true
  Xft.rgba:      rgb
  Xft.hintstyle: hintfull
- Xft.dpi:       132
-! Xft.dpi:       96
+! Xft.dpi:       132
+ Xft.dpi:       96
 ! ! }}}
 
 
