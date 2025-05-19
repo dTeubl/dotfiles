@@ -14,13 +14,14 @@ require("config.autocmd")
 
 -- other setup and self plugins
 
--- require("lazy").setup("plugins")
 require("config.lazy")
 
 vim.opt.termguicolors = true
 require("bufferline").setup()
+require("undotree").setup()
 -- require("vim_slime").setup()
 
 vim.o.background = "dark"
 vim.cmd([[colorscheme gruvbox]])
+vim.lsp.enable("pyright")
 

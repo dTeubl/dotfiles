@@ -1,5 +1,6 @@
 return {
     -- slime (REPL integration)
+    -- requres xdotool. 'pacman -S xdotool'
     {
         "jpalardy/vim-slime",
         lazy = false,
