@@ -238,7 +238,7 @@ exec_always "feh --bg-max ~/Pictures/wallpappers/coffeeintocode_black.png"
 exec_always --no-startup-id picom -b
 
 # Darken the screen
-exec_always "xrandr --output eDP-1 --brightness .5"
+exec_always "xrandr --output eDP-1 --brightness .85"
 
 # turn off auto screen banlking
 exec_always "xset s off"

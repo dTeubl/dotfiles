@@ -17,7 +17,9 @@ set t_Co=256
 nnoremap Q <Nop>
 
 " Set favourite colos
-colorscheme desktop_custom
+" colorscheme desktop_custom
+set background=dark
+" colorscheme murphy
 
 
 " If working in light environment
@@ -95,12 +97,15 @@ Plugin 'JuliaEditorSupport/julia-vim'
 
 Plugin 'gennaro-tedesco/nvim-jqx'
 
-"Plugin 'quarto-dev/quarto-nvim'
-"Plugin 'quarto-dev/quarto-vim'
+" Plugin 'quarto-dev/quarto-nvim'
+" Plugin 'quarto-dev/quarto-vim'
 " Plugin 'vim-pandoc/vim-pandoc-syntax'
 
 Plugin 'andrejlevkovitch/vim-lua-format'
 Plugin 'qaiviq/vim-imager'
+
+
+Plugin 'ellisonleao/gruvbox.nvim'
 
 
 " All of your Plugins must be added before the following line
@@ -121,12 +126,14 @@ filetype plugin on
 " }}}
 
 
+colorscheme gruvbox
+
 " AirLine setup ------{{{
 set laststatus=2
 set t_Co=256
 set ttimeoutlen=50  
+"let g:airline_theme='dark'
 let g:airline_theme='dark'
-" let g:airline_theme='light'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#virtualenv#enabled = 1
 let g:ariline#extensions#tabline#enabled=1
@@ -195,6 +202,8 @@ let g:vimtex_view_general_viewer = 'evince'
 let g:vimtex_compiler_latexmk_engines = {'pdflatex'         : '-pdf'}
 let g:vimtex_compiler_latexmk = { 'background' : 1, 'aux_dir' : './build','out_dir' : './', 'callback' : 1, 'continuous' : 1, 'executable' : 'latexmk', 'options' : [ '-shell-escape', '-verbose', '-time', '-file-line-error', '-synctex=1', '-interaction=nonstopmode', '-pdf' ], }
 let g:vimtex_view_skim_activate=1
+let g:vimtex_quickfix_open_on_warning ='false'
+let g:vimtex_quickfix_open_on_error = 'false'
 
 autocmd FileType tex :NoMatchParen
 au FileType tex setlocal nocursorline
