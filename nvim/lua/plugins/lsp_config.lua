@@ -5,5 +5,6 @@ return {
 
         require("lspconfig").pyright.setup {capabilities = capabilities}
 
+        vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename)
     end
 }

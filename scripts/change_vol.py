@@ -8,7 +8,7 @@ print("Try to Change the output volume")
 # Basic commands and variables
 
 
-bt_request = "pactl list | grep -m 1 -i bluez"
+bt_request = "pactl list | grep -m 1 -i bluez_output"
 cmd_base = "pactl set-sink-volume "
 cmd_mute = "pactl set-sink-mute "
 bt_sink = "bluez_output.2C_41_A1_FD_19_4D.1"

@@ -4,8 +4,8 @@ return {
         cmd = "Telescope",
         version = false,
         dependencies = {"nvim-lua/plenary.nvim"},
-        dependencies = {"BurntSushi/ripgrep"},
-        dependencies = {"sharkdp/fd"},
+        -- dependencies = {"BurntSushi/ripgrep"},
+        -- dependencies = {"sharkdp/fd"},
         keys = {
             {
                 "<leader>sf",

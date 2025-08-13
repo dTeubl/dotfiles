@@ -162,7 +162,7 @@ alias rsync='rsync -vah --progress'
 
 # Alias for joplin terminal
 # alias joplin='joplin server start & joplin --profile ~/.config/joplin-desktop'
-# 
+#
 # alias joplin='joplin --profile ~/.config/joplin-desktop'
 
 # Starts SSH-agent after login. NOTE: This is not the best sollution, but works!
@@ -188,9 +188,12 @@ fi
 alias term='urxvt&'
 alias xterm='term'
 alias vim='nvim'
+alias dmesg='dmesg -e -H -c'
 
 EDITOR='nvim'
 
-ssh-add ~/.ssh/tumgit 2> /dev/null
+ssh-add ~/.ssh/lrz_gitlab 2> /dev/null
 ssh-add ~/.ssh/github 2> /dev/null
+ssh-add ~/.ssh/home_rpi 2> /dev/null
 
+set -o ignoreeof
