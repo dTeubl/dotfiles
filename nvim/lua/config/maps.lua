@@ -20,3 +20,7 @@ Map("n", "-", "ddp")
 Map("n", "_", "dd2kp")
 
 Map("n", "<A-ENTER>", ":SlimeSend<CR>")
+
+Map("n", ">", "<cmd>cnext<return>")
+Map("n", "<", "<cmd>cprev<return>")
+
