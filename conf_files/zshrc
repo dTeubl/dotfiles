@@ -123,6 +123,7 @@ export PATH="/home/dteubl/.cargo/bin"/:$PATH
 
 alias naut='nautilus . &'
 alias mount='mount -o gid=dteubl,fmask=113,dmask=002'
+alias ncdu='ncdu --color dark-bg'
 
 
 # Add alias for tmux
