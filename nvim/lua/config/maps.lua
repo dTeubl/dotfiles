@@ -21,6 +21,13 @@ Map("n", "_", "dd2kp")
 
 Map("n", "<A-ENTER>", ":SlimeSend<CR>")
 
-Map("n", ">", "<cmd>cnext<return>")
-Map("n", "<", "<cmd>cprev<return>")
+Map("n", "j", "gj")
+Map("n", "k", "gk")
+
+Map("v", "j", "gj")
+Map("v", "k", "gk")
+
+-- These are interfering with identation function
+-- Map("n", "<", "<cmd>cprev<return>")
+-- Map("n", ">", "<cmd>cnext<return>")
 
