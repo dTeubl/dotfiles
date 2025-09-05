@@ -2,7 +2,6 @@ local vim = vim
 
 vim.filetype = on
 vim.syntax = on
-vim.cmd 'colorscheme vim'
 
 vim.api.nvim_set_hl(0, 'LineNr', {fg = 'white', bold = false})
 
@@ -16,7 +15,7 @@ require("config.autocmd")
 
 require("config.lazy")
 
-vim.opt.termguicolors = true
+-- vim.opt.termguicolors = true
 require("bufferline").setup()
 require("undotree").setup()
 -- require("vim_slime").setup()
@@ -24,4 +23,3 @@ require("undotree").setup()
 vim.o.background = "dark"
 vim.cmd([[colorscheme gruvbox]])
 vim.lsp.enable("pyright")
-

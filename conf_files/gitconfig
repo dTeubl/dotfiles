@@ -1,6 +1,6 @@
 [user]
-	name = DTeubl @xps
-    email = teubl.dani@gmail.com
+	name = dteubl
+	email = daniel.teubl@tytan-technologies.com
 [core]
 	editor = nvim
 
@@ -27,14 +27,17 @@
 	branch = auto
 	diff = auto
 	status = auto
+
 [color "diff"]
     old = "bold yellow"
     new = "bold green"
 
 [init]
 	defaultBranch = main
+
 [credential]
 	helper = store
+
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f

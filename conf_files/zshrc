@@ -16,7 +16,7 @@ ZSH_THEME="powerline"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
- DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -25,23 +25,13 @@ ZSH_THEME="powerline"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="false"
 
 # Uncomment the following line to enable command auto-correction.
- ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -50,7 +40,7 @@ ZSH_THEME="powerline"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 # User configuration
 
@@ -71,7 +61,7 @@ POWERLINE_SHOW_GIT_ON_RIGHT="true"
 source $ZSH/oh-my-zsh.sh
 
 # add autosuggestions
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+#source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 
 # configuration for autosuggestion
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=yellow'
@@ -79,55 +69,17 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=yellow'
 # Keybindings
 bindkey -v
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
 export EDITOR='nvim'
 #export VISUAL='nvim'
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 # Here is some etra to add More dirextory to the PATH variable
-
 export PATH="$PATH:"~/scripts""
-# to add some extra pithon thing installed by pip
 export PATH="$PATH:"~/.local/bin""
-#export PATH="$PATH:"~/tools/clion/clion-2022.3.2/bin""
-export PATH="$PATH:"/usr/lib/jvm/java-17-openjdk""
-export PATH="$PATH:"/lib/qt6/bin""
-export PATH="$PATH:"/lib/qt6""
 
-export JAVA_HOME="/usr/lib/jvm/java-17-openjdk"
-export PATH=$JAVA_HOME/bin/:$PATH
-export PATH="/home/dteubl/.cargo/bin"/:$PATH
-
-alias naut='nautilus . &'
-alias mount='mount -o gid=dteubl,fmask=113,dmask=002'
 alias ncdu='ncdu --color dark-bg'
 
-
 # Add alias for tmux
-#alias tmux='tmux -2 -f /home/teubl/.tmux.conf'
+alias tmux='tmux -2 -f /home/teubl/.tmux.conf'
 
 #TODO run fbterm only if you def terminal is linux
 case "$TERM" in
@@ -161,40 +113,14 @@ alias bat_raw='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
 # Alias for copy with rSunz
 alias rsync='rsync -vah --progress'
 
-# Alias for joplin terminal
-# alias joplin='joplin server start & joplin --profile ~/.config/joplin-desktop'
-#
-# alias joplin='joplin --profile ~/.config/joplin-desktop'
-
 # Starts SSH-agent after login. NOTE: This is not the best sollution, but works!
 if [[ "$SSH_AGENT_PID" == "" ]]; then
     eval "$(ssh-agent)" > /dev/null
 fi
 
-# alias for vim to alwasy enable server mode - useful for background tasks
-# like tex-->pdf conversion
-#alias vim='vim --serverame vim'
+ssh-add ~/.ssh/github 2> /dev/null
 
-
-# alias for gnome-terminal
-#alias gnome-terminal='gnome-terminal --hide-menubar --full-screen'
-
-#alias google-chrome-stable='google-chrome-stable --password-store=basic'
-
-# dirty sollution - should change is some time..
-# Thanks to UPC and its shitty router.
-# nmcli dev modify wlp1s0 802-11-wireless.mtu 1400 >>/dev/null
-
-# alis for xterm
-alias term='urxvt&'
-alias xterm='term'
 alias vim='nvim'
 alias dmesg='dmesg -e -H -c'
 
-EDITOR='nvim'
-
-ssh-add ~/.ssh/lrz_gitlab 2> /dev/null
-ssh-add ~/.ssh/github 2> /dev/null
-ssh-add ~/.ssh/home_rpi 2> /dev/null
-
-set -o ignoreeof
+#set -o ignoreeof
