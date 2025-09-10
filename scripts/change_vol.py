@@ -12,6 +12,7 @@ bt_request = "pactl list | grep -m 1 -i bluez_output"
 cmd_base = "pactl set-sink-volume "
 cmd_mute = "pactl set-sink-mute "
 bt_sink = "bluez_output.2C_41_A1_FD_19_4D.1"
+bt_sink = "bluez_output.78_66_F3_22_B7_9B.1"  # Basataska
 ananlog_sink = "alsa_output.pci-0000_00_1f.3.analog-stereo"
 tog = " toggle"
 
