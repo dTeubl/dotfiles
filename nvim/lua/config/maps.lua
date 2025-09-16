@@ -19,7 +19,7 @@ Map("v", "H", "0")
 Map("n", "-", "ddp")
 Map("n", "_", "dd2kp")
 
-Map("n", "<A-ENTER>", ":SlimeSend<CR>")
+-- Map("n", "<A-ENTER>", ":SlimeSend<CR>")
 
 Map("n", "j", "gj")
 Map("n", "k", "gk")
