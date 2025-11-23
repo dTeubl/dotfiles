@@ -21,7 +21,7 @@ autocmd('BufWritePost', {
     pattern = "*.py",
     group = "AutoFormat",
     callback = function()
-        vim.cmd("silent !black --quiet %")
+        vim.cmd("silent !python3 -m black --quiet %")
         vim.cmd("edit")
     end
 })

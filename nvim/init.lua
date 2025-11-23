@@ -22,4 +22,6 @@ require("undotree").setup()
 
 vim.o.background = "dark"
 vim.cmd([[colorscheme gruvbox]])
+-- vim.lsp.enable("pylsp")
+--vim.lsp.enable("python3 -m pyright")
 vim.lsp.enable("pyright")
