@@ -54,11 +54,11 @@ if str(sys.argv[1]) == "mute":
 
 if str(sys.argv[1]) == "up" or str(sys.argv[1]) == "down":
     if str(sys.argv[1]) == "up":
-        new_val = " +5%"
+        new_val = " +2.5%"
         # print("increaseing value")
 
     if str(sys.argv[1]) == "down":
-        new_val = " -5%"
+        new_val = " -2.5%"
         # print("decreaseing value")
 
     cmd = cmd_base + sink + new_val

@@ -69,9 +69,8 @@ XTerm.vt100.faceName:Hack:size=10;antialias=true
 
 ! Config for URXVT
 ! URxvt*font: xft:Hack:size=10, xft:Source\ Code\ Pro\ for\ Powerline:size=10
-URxvt*font: xft:Hack:size=10,\
-	xft:Source Code Pro:pixelsize=18:style=medium:antialias=true,\
-	-*-unifont-*-*-*-*-*-*-*-*-*-*-*-*
+URxvt*font: xft:Hack:size=10
+! xft:Source Code Pro:pixelsize=12,xft:DejaVuSansMono Nerd Font:size=6
 URxvt*scrollBar: false
 URxvt*visualBerll: true
 URxvt*fading: 15

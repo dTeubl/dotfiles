@@ -3,7 +3,7 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
 
-        require("lspconfig").pyright.setup {capabilities = capabilities}
+        -- require("lspconfig").pyright.setup {capabilities = capabilities}
 
         vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename)
         vim.keymap.set("n", "<leader>h", vim.lsp.buf.hover)
