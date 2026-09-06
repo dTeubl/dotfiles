@@ -197,4 +197,16 @@ ssh-add ~/.ssh/lrz_gitlab 2> /dev/null
 ssh-add ~/.ssh/github 2> /dev/null
 ssh-add ~/.ssh/home_rpi 2> /dev/null
 
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	command rm -f -- "$tmp"
+}
+
 set -o ignoreeof
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/dteubl/.local/bin:$PATH"
